@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:xmls="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
+<html xmls:th="http://www.thymeleaf.org">
+<style>
+    img {
+        /*width: inherit;*/
+        /*max-width: 400%;*/
+        /*height: 900px;*/
+        max-width: 100%;
+        width: 60%;
+        border: 2px solid;
+
+    }
+</style>
+<head th:replace="fragments.html :: head"></head>
+<body class="bg-light">
+<!--<p th:text="'hi' + ${data}">반가워</p>-->
+    <div th:replace="fragments.html :: main-nav"></div>
+</body>
+<div class="container">
+    <!--    <div class="py-5 text-center">-->
+    <!--        <h2>버튼 두개</h2>-->
+    <p></p>
+    <div class="container">
+        <!--  Control Button -->
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-success btn-lg btn-block">Coalyard Monitoring</button>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-success btn-lg btn-block">Alert Configuration</button>
+                <br> <br> <br> <br> <br>
+            </div>
+        </div>
+        <!-- img -->
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
+                <div>
+                    <img src="./images/home.png" align="center">
+                </div>
+            </div>
+            <div class="col-md-2">
+                <br> <br> <br>
+            </div>
+        </div>
+
+        <!-- realTime Data  -->
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-5">
+                <h2>Smart Sensor Data</h2>
+            </div>
+        </div>
+    </div>
+</div>
+    <div th:replace="fragments.html :: footer"></div>
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</html>
