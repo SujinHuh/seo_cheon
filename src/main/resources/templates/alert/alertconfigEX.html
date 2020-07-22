@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:xmls="http://www.w3.org/1999/xhtml">
+<html xmls:th="http://www.thymeleaf.org">
+<head th:replace="fragments.html :: head"></head>
+<body class="bg-light">
+<div th:replace="fragments.html :: main-nav"></div>
+<br>
+<div class="container">
+    <!--  Control Button -->
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <button type="button" class="btn btn-success btn-lg btn-block"
+                    th:href="@{/indx}">Coalyard Monitoring
+            </button>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-success btn-lg btn-block"
+                    th:href="@{/alert/alertconfig}">Alert Configuration
+            </button>
+            <br> <br> <br>
+        </div>
+    </div>
+</div>
+
+<!-- Alert Threshold -->
+<div class="DucID">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-10">
+            <h3>DUC ID</h3>
+            <br>
+           버튼 넣기
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<div th:replace="fragments.html :: footer"></div>
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
+
+

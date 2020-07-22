@@ -9,8 +9,17 @@ public class Hello {
 
     @GetMapping("hi")
     public String index(Model model) {
-        model.addAttribute("data","hello");
+//        model.addAttribute("data","hello");
         return "hi";
     }
 
+    @GetMapping("alert/alertconfig")
+    public String alter(Model model) {
+        return "alert/alertconfig";
+    }
+
+    @GetMapping("alert/alertconfigEx")
+    public String alterEx(Model model) {
+        return "alert/alertconfigEx";
+    }
 }

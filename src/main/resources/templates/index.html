@@ -1,37 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:xmls="http://www.w3.org/1999/xhtml"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+      xmlns:float="http://www.w3.org/1999/xhtml">
 <html xmls:th="http://www.thymeleaf.org">
-<style>
-    img {
-        /*width: inherit;*/
-        /*max-width: 400%;*/
-        /*height: 900px;*/
-        max-width: 100%;
-        width: 60%;
-        border: 2px solid;
 
-    }
-</style>
 <head th:replace="fragments.html :: head"></head>
 <body class="bg-light">
 <!--<p th:text="'hi' + ${data}">반가워</p>-->
-    <div th:replace="fragments.html :: main-nav"></div>
-</body>
+<div th:replace="fragments.html :: main-nav"></div>
+
 <div class="container">
     <!--    <div class="py-5 text-center">-->
     <!--        <h2>버튼 두개</h2>-->
-    <p></p>
+   <br>
     <div class="container">
         <!--  Control Button -->
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-6">
-                <button type="button" class="btn btn-success btn-lg btn-block">Coalyard Monitoring</button>
+                <button type="button" class="btn btn-success btn-lg btn-block"
+                        th:href="@{/}"
+                >Coalyard Monitoring</button>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-success btn-lg btn-block">Alert Configuration</button>
-                <br> <br> <br> <br> <br>
+                <button type="button" class="btn btn-success btn-lg btn-block"
+                 th:href="@{/order/list}">Alert Configuration</button>
+                <br> <br> <br>
             </div>
         </div>
         <!-- img -->
@@ -43,7 +36,7 @@
                 </div>
             </div>
             <div class="col-md-2">
-                <br> <br> <br>
+                <br> <br>
             </div>
         </div>
 
@@ -52,11 +45,50 @@
             <div class="col-md-2"></div>
             <div class="col-md-5">
                 <h2>Smart Sensor Data</h2>
+                <br>
+
+<!--                <textarea cols="150" rows="10" readonly="readonly"-->
+<!--                          onclick="this.select()" onfocus="this.select()" >-->
+<!--                    내용이 들어갑니다. </textarea>-->
+                <div class="row" style="margin:0px;">
+<!--                    <div class="col-md-2">-->
+<!--                    </div>-->
+                    <div class="col-md-6">
+                        <!-- data-spy 설정, target은 id가 list-example, overflow설정과 높이 설정이 되어야 한다. -->
+                        <!-- data-offset은 scrollspy의 갭이다. 즉 list-item1의 위치가 처음 나왔을 때, 얼마나 전에 나오는지,
+                        즉 200이라고 쓰면 div 크기가 200이가 때문에 Item 2가 나오기도 전에 button active가 바뀐다.-->
+                        <div  data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example" style="height: 150px; width:100%; overflow: auto;" float:right;
+                             onclick="this.select()" onfocus="this.select()" >
+                            <!-- id와 target의 href 어트리뷰트와 매핑된다.-->
+                            <h4 id="list-item-1">Sensor</h4>
+                           센서정보 센서정보
+                            <h4 id="list-item-2">Item 2</h4>
+                            ...
+                            <h4 id="list-item-3">Item 3</h4>
+                            ...
+                            <h4 id="list-item-4">Item 4</h4>
+                            ...
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-success btn-lg">Warning</button>
+                    </div>
+                </div>
+
             </div>
+
         </div>
+<!--        <div class="row">-->
+<!--        <div class="col-md-9">-->
+<!--        </div>-->
+<!--            <div class="col-md-1">-->
+<!--                <button type="button" class="btn btn-primary btn-lg">Large button</button>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 </div>
-    <div th:replace="fragments.html :: footer"></div>
+<div th:replace="fragments.html :: footer"></div>
 <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
 </html>

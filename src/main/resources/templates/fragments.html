@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:xmls="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:xmls="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/html">
 <html xmls:th="http://www.thymeleaf.org">
     <!-- head -->
     <head th:fragment="head">
@@ -7,9 +8,21 @@
         <title>영흥발전소저탄장</title>
         <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css"/>
+
         <style>
             .container {
                 max-width: 100%;
+            }
+        </style>
+        <style>
+            img {
+                /*width: inherit;*/
+                /*max-width: 400%;*/
+                /*height: 900px;*/
+                max-width: 100%;
+                width: 60%;
+                border: 2px solid;
+
             }
         </style>
 
@@ -26,7 +39,24 @@
             <span class="navbar-toggler-icon"></span>
 
         </button>
+        <br>
     </nav>
+
+    <!--두개 버튼-->
+    <div  th:fragment="settings-menu" class="btn-group">
+        <!--  Control Button -->
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-success btn-lg btn-block">Coalyard Monitoring</button>
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-success btn-lg btn-block"
+                        th:href="@{/order/list}">Alert Configuration</button>
+                <br> <br> <br>
+            </div>
+        </div>
+    </div>
 
     <footer th:fragment="footer">
         <div class="row justify-content-center">
