@@ -2,67 +2,120 @@
 <html lang="en" xmlns:xmls="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
       xmlns="http://www.w3.org/1999/html">
 <html xmls:th="http://www.thymeleaf.org">
-    <!-- head -->
-    <head th:fragment="head">
-        <meta http-equiv="content-type" content="text/html" ; charset="UTF-8"/>
-        <title>영흥발전소저탄장</title>
-        <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
-        <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css"/>
+<!-- head -->
+<head th:fragment="head">
+    <meta http-equiv="content-type" content="text/html" ; charset="UTF-8"/>
+    <title>영흥발전소저탄장</title>
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/node_modules/font-awesome/css/font-awesome.min.css"/>
 
-        <style>
-            .container {
-                max-width: 100%;
-            }
-        </style>
-        <style>
-            img {
-                /*width: inherit;*/
-                /*max-width: 400%;*/
-                /*height: 900px;*/
-                max-width: 100%;
-                width: 60%;
-                border: 2px solid;
+    <style>
+        .container {
+            max-width: 100%;
+        }
+    </style>
+    <style>
+        img {
+            /*width: inherit;*/
+            /*max-width: 400%;*/
+            /*height: 900px;*/
+            max-width: 100%;
+            width: 60%;
+            border: 2px solid;
 
-            }
-        </style>
+        }
 
-    </head>
+        /*div {*/
+        /*    border-right-style : solid;*/
+        /*}*/
+    </style>
+    <!-- Alert Threshold  Table -->
+    <style type="text/css">
+        .tg {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
 
-    <!--nav Bar-->
-    <nav th:fragment="main-nav" class="navbar navbar-expand-sm navbar-dark bg-dark">
-        <a class="navbar-brand" href="/" th:href="@{/}">
-            <!--        <img src="/images/logo_sm.png" width="30" height="30">-->
-        </a>
-        <!-- hamburger Button -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        .tg td {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
 
-        </button>
-        <br>
-    </nav>
+        .tg th {
+            border-color: black;
+            border-style: solid;
+            border-width: 1px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: normal;
+            overflow: hidden;
+            padding: 10px 5px;
+            word-break: normal;
+        }
 
-    <!--두개 버튼-->
-    <div  th:fragment="settings-menu" class="btn-group">
-        <!--  Control Button -->
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-6">
-                <button type="button" class="btn btn-success btn-lg btn-block">Coalyard Monitoring</button>
-            </div>
-            <div class="col-md-3">
-                <button type="button" class="btn btn-success btn-lg btn-block"
-                        th:href="@{/order/list}">Alert Configuration</button>
-                <br> <br> <br>
-            </div>
+        .tg .tg-baqh {
+            text-align: center;
+            vertical-align: top
+        }
+
+        .tg .tg-c3ow {
+            border-color: inherit;
+            text-align: center;
+            vertical-align: top
+        }
+    </style>
+
+    <style>
+        #textThreshold {
+            width: 100px;
+            height: 50px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<!--nav Bar-->
+<nav th:fragment="main-nav" class="navbar navbar-expand-sm navbar-dark bg-dark">
+    <a class="navbar-brand" href="/" th:href="@{/}">
+        <!--        <img src="/images/logo_sm.png" width="30" height="30">-->
+    </a>
+    <!-- hamburger Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+
+    </button>
+    <br>
+</nav>
+
+<!--두개 버튼-->
+<div th:fragment="settings-menu" class="btn-group">
+    <!--  Control Button -->
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-6">
+            <button type="button" class="btn btn-success btn-lg btn-block">Coalyard Monitoring</button>
+        </div>
+        <div class="col-md-3">
+            <button type="button" class="btn btn-success btn-lg btn-block"
+                    th:href="@{/order/list}">Alert Configuration
+            </button>
+            <br> <br> <br>
         </div>
     </div>
+</div>
 
-    <footer th:fragment="footer">
-        <div class="row justify-content-center">
-            <!--            <img class="mb-2" src="/images/logo_long_kr.jpg" alt="" width="100">-->
-            <small class="d-block mb-3 text-muted">&copy; 영흥발전소저탄장</small>
-        </div>
-    </footer>
+<footer th:fragment="footer">
+    <div class="row justify-content-center">
+        <!--            <img class="mb-2" src="/images/logo_long_kr.jpg" alt="" width="100">-->
+        <small class="d-block mb-3 text-muted">&copy; 영흥발전소저탄장</small>
+    </div>
+</footer>
 
 </html>

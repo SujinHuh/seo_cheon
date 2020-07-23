@@ -26,42 +26,79 @@
 <!-- Alert Threshold -->
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-7">
-            <button type="button" class="btn btn-success btn-lg">DCU ID </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-success btn-lg">Sensor</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-success btn-lg">Threshold</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" class="btn btn-success btn-lg">Bound</button>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-9">
+        <h2>Alert Threshold</h2>
+        <br>
+        <table class="tg" style="undefined;table-layout: fixed; width: 555px">
+            <colgroup>
+                <col style="width: 140px">
+                <col style="width: 140px">
+                <col style="width: 140px">
+                <col style="width: 140px">
+            </colgroup>
+            <thead>
+            <tr>
+                <th class="tg-c3ow">DCU ID</th>
+                <th class="tg-baqh">Sensor</th>
+                <th class="tg-baqh">Threshold</th>
+                <th class="tg-baqh">Bound</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="tg-baqh">
+                    <select name='fruits' size='8' style="width: 100px">
 
-    <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-2">
+                        <!-- Select Box -->
+                        <option value='' selected>-- 선택 --</option>
+                        <option value='apple'>사과</option>
+                        <option value='banana'>바나나</option>
+                        <option value='lemon'>레몬</option>
+                    </select>
+                </td>
+                <td class="tg-baqh">
+                    <select name='fruits' size='8' style="width: 100px">
 
-        </div>
-        <div class="col-md-2"></div>
-        <div class="col-md-2">
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="fruit" value="사과" /> 사과
-            <br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="fruit" value="바나나" checked="checked" /> 바나나
-        </div>
-        <div class="col-md-2">
+                        <!-- Select Box -->
+                        <option value='' selected>-- 선택 --</option>
+                        <option value='apple'>사과</option>
+                        <option value='banana'>바나나</option>
+                        <option value='lemon'>레몬</option>
+                    </select>
+                </td>
+                </td>
+                <td class="tg-baqh">
+                    <input id="textThreshold" type="text" placeholder="입력!">
+                </td>
+                <td class="tg-baqh" >
 
-        </div>
-        <div class="col-md-2">
+                    <div>
+                        <input type="radio" id="huey" name="drone" value="huey"
+                               checked>
+                        <label for="huey">Huey</label>
+                    </div>
 
-        </div>
+                    <div>
+                        <input type="radio" id="dewey" name="drone" value="dewey">
+                        <label for="dewey">Dewey</label>
+                    </div>
+
+                    <div>
+                        <input type="radio" id="louie" name="drone" value="louie">
+                        <label for="louie">Louie</label>
+                    </div>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
     </div>
 </div>
+
+
 <div th:replace="fragments.html :: footer"></div>
 <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
