@@ -22,4 +22,15 @@ public class Hello {
     public String alterEx(Model model) {
         return "alert/alertconfigEx";
     }
+
+
+    @GetMapping("popup/graph")
+    public String graph(Model model) {
+        return "popup/graph";
+    }
+
+    @GetMapping("popup/alert")
+    public String alert(Model model) {
+        return "popup/alert";
+    }
 }
