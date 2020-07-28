@@ -32,16 +32,16 @@
             <div class="col-md-3"></div>
             <div class="col-md-4">
                 <button type="button" class="btn btn-link btn-lg">
-                    <h4>
-                        NW, 50m/s
-                    </h4>
+                    <span id="topLeft">
+                        <h4> NW, 50m/s</h4>
+                    </span>
                 </button>
             </div>
             <div class="col-md-3">
                 <button type="button" class="btn btn-link btn-lg">
-                    <h4>
-                        NW, 50m/s
-                    </h4>
+                    <span id="topRight">
+                        <h4> NW, 50m/s</h4>
+                    </span>
                 </button>
             </div>
         </div>
@@ -60,16 +60,16 @@
             <div class="col-md-3"></div>
             <div class="col-md-4">
                 <button type="button" class="btn btn-link btn-lg">
-                    <h4>
-                        NW, 10m/s
-                    </h4>
+                  <span id="downLeft">
+                        <h4> NW, 10m/s</h4>
+                  </span>
                 </button>
             </div>
             <div class="col-md-3">
                 <button type="button" class="btn btn-link btn-lg">
-                    <h4>
-                        NW, 25m/s
-                    </h4>
+                 <span id="downRight">
+                     <h4> NW, 50m/s</h4>
+                 </span>
                 </button>
             </div>
         </div>
@@ -109,5 +109,58 @@
 <div th:replace="fragments.html :: footer"></div>
 <script src="/node_modules/jquery/dist/jquery.min.js"></script>
 <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+<script>
+
+    var windIntervval = null;
+
+    function drawWind() {
+
+        $.ajax({
+            url: '/sensor/getWindInfo',
+            type:'post',
+            contentType : 'application/json',
+            dataType: 'json',
+            data:JSON.stringify({userId:1}),
+            success: function(data) {
+                console.log('don ajax');
+                if(typeof data.windInfo !== 'undefined') {
+
+                    $.each(data.windInfo, function (index, obj) {
+                        if (index == 0) {
+                            $('#topLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + " m/s</h4>");
+                        } else if (index == 1) {
+                            $('#topRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + " m/s</h4>");
+                        } else if (index == 2) {
+                            $('#downLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + " m/s</h4>");
+                        } else if (index == 3) {
+                            $('#downRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + " m/s</h4>");
+                        }
+                    });
+                }
+            },
+            error:function(request,status,error){
+                console.log(error);
+            }
+        });
+    }
+
+
+    function setIntervalEVent() {
+        windIntervval = setInterval(drawWind, 1000);
+    }
+
+    function stopWindInterVal() {
+        clearInterval(windIntervval);
+    }
+
+    //시작 함수
+    $(document).ready(function(){
+        //풍속 갱신 지정
+        setIntervalEVent();
+
+    });
+
+
+</script>
 </body>
 </html>
