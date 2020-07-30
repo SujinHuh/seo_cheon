@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+//json
 @RestController
 @RequestMapping("/sensor")
 public class SensorDataInfoController {

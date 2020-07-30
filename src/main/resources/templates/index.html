@@ -13,19 +13,20 @@
     <div class="container">
         <!--  Control Button -->
         <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-6">
-                <button type="button" class="btn btn-success btn-lg btn-block"
-                        th:href="@{/}"
-                >Coalyard Monitoring
-                </button>
-            </div>
-            <div class="col-md-3">
-                <button type="button" class="btn btn-success btn-lg btn-block"
-                        th:href="@{/order/list}">Alert Configuration
-                </button>
-                <br> <br> <br>
-            </div>
+<!--            <div class="col-md-1"></div>-->
+<!--            <div class="col-md-6">-->
+<!--                <button type="button" class="btn btn-success btn-lg btn-block"-->
+<!--                        th:href="@{/}"Coalyard Monitoring>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="col-md-3">-->
+<!--                <button type="button" class="btn btn-success btn-lg btn-block"-->
+<!--                        th:href="@{/order/list}">Alert Configuration-->
+<!--                </button>-->
+<!--                <br> <br> <br>-->
+<!--            </div>-->
+
+            <div th:replace="fragments.html :: settings-menu(currentMenu='coalyardMonitoring')"></div>
         </div>
         <!-- 실시간 풍향/풍속 ()-->
         <div class="row">

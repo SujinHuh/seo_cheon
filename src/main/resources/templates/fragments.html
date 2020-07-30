@@ -100,24 +100,16 @@
 
     </button>
     <br>
-</nav>
+</nav>`
 
-<!--두개 버튼-->
-<div th:fragment="settings-menu" class="btn-group">
-    <!--  Control Button -->
-    <div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-6">
-            <button type="button" class="btn btn-success btn-lg btn-block">Coalyard Monitoring</button>
-        </div>
-        <div class="col-md-3">
-            <button type="button" class="btn btn-success btn-lg btn-block"
-                    th:href="@{/order/list}">Alert Configuration
-            </button>
-            <br> <br> <br>
-        </div>
-    </div>
+    <!--Settings-menu -->
+<div th:fragment="settings-menu (currentMenu)" class="list-group">
+    <a class="list-group-item list-group-item-action" th:classappend="${currentMenu == 'coalyardMonitoring'}? active" href="#"
+       th:href="@{/settings/coalyardMonitoring}">Coalyard Monitoring</a>
+    <a class="list-group-item list-group-item-action" th:classappend="${currentMenu == 'alertConfiguration'}? active" href="#"
+       th:href="@{/settings/password}">Alert Configuration</a>
 </div>
+
 
 <footer th:fragment="footer">
     <div class="row justify-content-center">
