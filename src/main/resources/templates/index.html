@@ -3,7 +3,37 @@
       xmlns:float="http://www.w3.org/1999/xhtml">
 <html xmls:th="http://www.thymeleaf.org">
 
-<head th:replace="fragments.html :: head"></head>
+<head th:replace="fragments.html :: head">
+
+
+</head>
+
+<style>
+
+    .mon.active {
+        padding: .5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+        border-radius: .3rem;
+        display: block;
+        width: 100%;
+        color: #fff;
+        border: 1px solid #13530e;
+        background:#13530e;
+    }
+    .mon {
+        padding: .5rem 1rem;
+        font-size: 1.25rem;
+        line-height: 1.5;
+        border-radius: .3rem;
+        display: block;
+        width: 100%;
+        color: #fff;
+        border: 1px solid #c3ffbe;
+        background: #c3ffbe;
+    }
+
+</style>
 <body class="bg-light">
 <!--<p th:text="'hi' + ${data}">반가워</p>-->
 <div th:replace="fragments.html :: main-nav"></div>
@@ -13,100 +43,19 @@
     <div class="container">
         <!--  Control Button -->
         <div class="row">
-<!--            <div class="col-md-1"></div>-->
-<!--            <div class="col-md-6">-->
-<!--                <button type="button" class="btn btn-success btn-lg btn-block"-->
-<!--                        th:href="@{/}"Coalyard Monitoring>-->
-<!--                </button>-->
-<!--            </div>-->
-<!--            <div class="col-md-3">-->
-<!--                <button type="button" class="btn btn-success btn-lg btn-block"-->
-<!--                        th:href="@{/order/list}">Alert Configuration-->
-<!--                </button>-->
-<!--                <br> <br> <br>-->
-<!--            </div>-->
-
-            <div th:replace="fragments.html :: settings-menu(currentMenu='coalyardMonitoring')"></div>
-        </div>
-        <!-- 실시간 풍향/풍속 ()-->
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-4">
-                <button type="button" class="btn btn-link btn-lg">
-                    <span id="topLeft">
-                        <h4> NW, 50m/s</h4>
-                    </span>
+            <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <button type="button" id="monitorBtn" class="mon active" onclick="goPage('monitor');">Coalyard Monitoring
                 </button>
             </div>
             <div class="col-md-3">
-                <button type="button" class="btn btn-link btn-lg">
-                    <span id="topRight">
-                        <h4> NW, 50m/s</h4>
-                    </span>
+                <button type="button" id="alertConfigBtn" class="mon" onclick="goPage('alertConfig');">Alert Configuration
                 </button>
+                <br> <br> <br>
             </div>
         </div>
-        <!-- img -->
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-9">
-                <div>
-                    <img src="./images/home.png" align="center">
-                </div>
-            </div>
-            <br> <br>
-        </div>
-        <!-- 실시간 풍향/풍속 ()-->
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-4">
-                <button type="button" class="btn btn-link btn-lg">
-                  <span id="downLeft">
-                        <h4> NW, 10m/s</h4>
-                  </span>
-                </button>
-            </div>
-            <div class="col-md-3">
-                <button type="button" class="btn btn-link btn-lg">
-                 <span id="downRight">
-                     <h4> NW, 50m/s</h4>
-                 </span>
-                </button>
-            </div>
-        </div>
+        <div id="targetDiv">
 
-        <!-- realTime Data  -->
-        <div class="row">
-            <div class="col-lg-12 col-sm-12 col-xs-12">
-                <h2>Smart Sensor Data</h2>
-                <br>
-            </div>
-        </div>
-        <div class="row" style="margin:0px;">
-            <div class="col-md-10">
-                <!-- data-spy 설정, target은 id가 list-example, overflow설정과 높이 설정이 되어야 한다. -->
-                <!-- data-offset은 scrollspy의 갭이다. 즉 list-item1의 위치가 처음 나왔을 때, 얼마나 전에 나오는지,
-                즉 200이라고 쓰면 div 크기가 200이가 때문에 Item 2가 나오기도 전에 button active가 바뀐다.-->
-                <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example"
-                     style="height: 150px; width:100%; overflow: auto;"
-                     onclick="this.select()" onfocus="this.select()">
-                    <!-- id와 target의 href 어트리뷰트와 매핑된다.-->
-                    <!--                    <h4 id="list-item-1">Sensor</h4>-->
-                    <!--                    센서정보 센서정보-->
-                    <!--                    <h4 id="list-item-2">Item 2</h4>-->
-                    <!--                    ...-->
-                    <!--                    <h4 id="list-item-3">Item 3</h4>-->
-                    <!--                    ...-->
-                    <!--                    <h4 id="list-item-4">Item 4</h4>-->
-                    <!--                    ...-->
-                    <span id="smartSensorData">
-                        <h5>DCU: dcu1:  </h5>
-                    </span>
-                </div>
-            </div>
-            <div class="col-md-2" style="text-align: right">
-                <button type="button" class="btn btn-success btn-lg">Warning</button>
-            </div>
         </div>
     </div>
 </div>
@@ -114,102 +63,34 @@
 
 <script>
 
-    var windIntervval = null;
 
-    function drawWind() {
-
-        $.ajax({
-            url: '/sensor/getWindInfo',
-            type: 'post',
-            contentType: 'application/json',
-            dataType: 'json',
-            data: JSON.stringify({userId: 1}),
-            success: function (data) {
-                console.log('don ajax');
-                if (typeof data.windInfo !== 'undefined') {
-
-                    $.each(data.windInfo, function (index, obj) {
-                        if (index == 0) {
-                            $('#topLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + " m/s</h4>");
-                        } else if (index == 1) {
-                            $('#topRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + " m/s</h4>");
-                        } else if (index == 2) {
-                            $('#downLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + " m/s</h4>");
-                        } else if (index == 3) {
-                            $('#downRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + " m/s</h4>");
-
-                        }
-                    });
-                }
-            },
-            error: function (request, status, error) {
-                console.log(error);
-            }
-        });
+    function goPage(type) {
+        addClassMenu(type);
+        if(type === 'monitor') {
+            $('#targetDiv').load('/monitor');
+        } else if( type === 'alertConfig') {
+            stopWindInterVal();
+            $('#targetDiv').load('/alert/alertconfig');
+        }
     }
 
-
-    function setIntervalEVent() {
-        windIntervval = setInterval(drawWind, 1000);
+    function addClassMenu(type) {
+        if(type === 'monitor') {
+            $('#alertConfigBtn').removeClass("active");
+            $('#monitorBtn').addClass('active');
+        } else if( type === 'alertConfig') {
+            $('#monitorBtn').removeClass("active");
+            $('#alertConfigBtn').addClass('active');
+        }
     }
 
-    function stopWindInterVal() {
-        clearInterval(windIntervval);
-    }
 
     //시작 함수
     $(document).ready(function () {
-        //풍속 갱신 지정
-        setIntervalEVent();
-
+        goPage('monitor');
     });
 
-
 </script>
 
-<script>
-    let snesorData = null;
-
-    function drawSensorData() {
-
-        $.ajax({
-            url: 'sensor/getSencorDataInfo',
-            type: 'post',
-            contentType: 'application/json',
-            dataType: 'json',
-            data: JSON.stringify({userId: 1}),
-            success: function (data) {
-                console.log('sensorData gogogo~~~!!!');
-                if (typeof data.SensorInfo !== 'undefined') {
-
-                    $.each(data.sensorInfo, function (index, obj) {
-                        if (index == 0) {
-                            $('#smartSensorData').html('<h5>' + obj.sensorId + " " + "temperature" + obj.temperature +
-                                "humidity" + obj.humidity + "direction" + obj.direction + "speed" + obj.speed +
-                                "lux" + obj.lux + "dust" + obj.dust + "h2" + obj.h2 + "co2" + obj.co2 + "ethanol" + obj.ethanol +
-                                "voc" + obj.voc + "timestamp" + obj.timestamp + '</h5>');
-                        }
-                    });
-                }
-            },
-            error:function (request, status, error) {
-                console.log(err);
-            }
-        });
-    }
-
-    function setInterverEvent() {
-        snesorData = setInterval(drawSensorData,3000);
-    }
-    function stopSensorInterVal() {
-        clearInterval(snesorData);
-    }
-
-    //start Function
-    $(document).ready(function () {
-        //sensor update
-        setIntervalEVent();
-    })
-</script>
 </body>
 </html>

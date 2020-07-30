@@ -13,6 +13,12 @@ public class Hello {
         return "hi";
     }
 
+
+    @GetMapping("monitor")
+    public String monitor(Model model) {
+        return "monitor/monitor";
+    }
+
     @GetMapping("alert/alertconfig")
     public String alter(Model model) {
         return "alert/alertconfig";
