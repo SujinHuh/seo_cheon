@@ -28,7 +28,7 @@
                 <!-- data-offset은 scrollspy의 갭이다. 즉 list-item1의 위치가 처음 나왔을 때, 얼마나 전에 나오는지,
                 즉 200이라고 쓰면 div 크기가 200이가 때문에 Item 2가 나오기도 전에 button active가 바뀐다.-->
                 <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example"
-                     style="height: 150px; width:100%; overflow: auto;"
+                     style="height: 150px; width:100%; overflow: auto; border: 1.5px solid black "
                      onclick="this.select()" onfocus="this.select()">
                     <!-- id와 target의 href 어트리뷰트와 매핑된다.-->
                     <h4 id="list-item-1">Sensor</h4>
@@ -48,7 +48,7 @@
             <div class="col-md-9"></div>
             <div class="col-md-2">
                 <br>
-                <button type="button" class="btn btn-success btn-lg">Ok</button>
+                <button type="button" class="btn btn-success btn-lg" onclick="window.close();">Ok</button>
             </div>
         </div>
         <div th:replace="fragments.html :: footer"></div>
