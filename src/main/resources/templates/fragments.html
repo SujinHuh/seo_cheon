@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="/webjars/font-awesome/4.7.0/css/font-awesome.css"/>
     <script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
     <script src="/webjars/bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
-    <script src =/js/common.js></script>
+    <script src=/js/common.js></script>
     <style>
         .container {
             max-width: 100%;
@@ -26,10 +26,6 @@
             border: 2px solid;
 
         }
-
-        /*div {*/
-        /*    border-right-style : solid;*/
-        /*}*/
     </style>
     <!-- Alert Threshold  Table -->
     <style type="text/css">
@@ -53,9 +49,9 @@
             border-color: black;
             /* Alert Threshold  Line*/
             /*border-style: solid;*/
-            border-width: 1px;
+            border-width: 6px;
             font-family: Arial, sans-serif;
-            font-size: 14px;
+            font-size: 25px;
             font-weight: normal;
             overflow: hidden;
             padding: 10px 5px;
@@ -71,6 +67,13 @@
             border-color: inherit;
             text-align: center;
             vertical-align: top
+        }
+
+        .borderless table {
+            border-top-style: none;
+            border-left-style: none;
+            border-right-style: none;
+            border-bottom-style: none;
         }
     </style>
 
@@ -101,13 +104,16 @@
 
     </button>
     <br>
-</nav>`
+</nav>
+`
 
-    <!--Settings-menu -->
+<!--Settings-menu -->
 <div th:fragment="settings-menu (currentMenu)" class="list-group">
-    <a class="list-group-item list-group-item-action" th:classappend="${currentMenu == 'coalyardMonitoring'}? active" href="#"
+    <a class="list-group-item list-group-item-action" th:classappend="${currentMenu == 'coalyardMonitoring'}? active"
+       href="#"
        th:href="@{/settings/coalyardMonitoring}">Coalyard Monitoring</a>
-    <a class="list-group-item list-group-item-action" th:classappend="${currentMenu == 'alertConfiguration'}? active" href="#"
+    <a class="list-group-item list-group-item-action" th:classappend="${currentMenu == 'alertConfiguration'}? active"
+       href="#"
        th:href="@{/settings/password}">Alert Configuration</a>
 </div>
 

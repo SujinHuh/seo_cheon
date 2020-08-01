@@ -8,7 +8,7 @@
         <div class="col-md-9">
             <h2>Alert Threshold</h2>
             <br>
-            <table class="tg" style="table-layout: fixed; width: 555px">
+            <table class="table borderless" style=" height: 300px; width: 800px;">
                 <colgroup>
                     <col style="width: 140px">
                     <col style="width: 140px">
@@ -17,16 +17,17 @@
                 </colgroup>
                 <thead>
                 <tr>
-                    <th class="tg-c3ow">DCU ID</th>
+                    <th class="tg-baqh">DCU ID</th>
                     <th class="tg-baqh">Sensor</th>
                     <th class="tg-baqh">Threshold</th>
                     <th class="tg-baqh">Bound</th>
                 </tr>
                 </thead>
+
                 <tbody>
                 <tr>
                     <td class="tg-baqh">
-                        <select name='fruits' size='8' style="width: 100px">
+                        <select name='select' size='10' style="width: 152px;height: 202px;">
 
                             <!-- Select Box -->
                             <option value='' selected>-- 선택 --</option>
@@ -36,7 +37,7 @@
                         </select>
                     </td>
                     <td class="tg-baqh">
-                        <select name='fruits' size='8' style="width: 100px">
+                        <select name='select' size='10' style="width: 152px; height: 202px;">
 
                             <!-- Select Box -->
                             <option value='' selected>-- 선택 --</option>
@@ -47,21 +48,19 @@
                     </td>
                     </td>
                     <td class="tg-baqh">
-                        <input id="textThreshold" type="text" placeholder="입력!">
+                        <input id="textThreshold" style="width: 158px; height: 56px; margin-top: 60px; " type="text"
+                               placeholder="입력">
                     </td>
                     <td class="tg-baqh">
 
-                        <div>
+                        <div class="">
                             <input type="radio" id="huey" name="drone" value="huey"
                                    checked>
                             <label for="huey">Up</label>
-                        </div>
-
-                        <div>
+                        <br>
                             <input type="radio" id="dewey" name="drone" value="dewey">
                             <label for="dewey">Down</label>
                         </div>
-
                     </td>
                 </tr>
                 </tbody>
