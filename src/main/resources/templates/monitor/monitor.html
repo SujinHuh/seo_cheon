@@ -36,7 +36,7 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-4">
-                <button type="button" class="btn btn-link btn-lg">
+                <button type="button" onclick="realTimeWindSpeedFunction()" class="btn btn-link btn-lg">
                     <span id="topLeft">
                         <h4> NW, 50m/s</h4>
                     </span>
@@ -108,7 +108,7 @@
                 </div>
             </div>
             <div class="col-md-2" style="text-align: right">
-                <button type="button" onclick="realTimeFunction()"class="btn btn-success btn-lg" style="float: left">Warning</button>
+                <button type="button" onclick="sensorDataWarningFunction()" class="btn btn-success btn-lg" style="float: left">Warning</button>
             </div>
         </div>
     </div>
@@ -160,10 +160,13 @@
         }
     }
 
-    function realTimeFunction() {
+    function sensorDataWarningFunction() {
         window.open("/popup/alert","MsgWindow", "width=1500,height=800");
     }
 
+    function realTimeWindSpeedFunction() {
+        window.open("/popup/graph", "MsgWindow" , "width=1800 ,height=950")
+    }
     //시작 함수
     $(document).ready(function () {
         //풍속 갱신 지정
