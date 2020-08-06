@@ -12,8 +12,9 @@
         width: 100%;
         color: #fff;
         border: 1px solid #13530e;
-        background:#13530e;
+        background: #13530e;
     }
+
     .mon {
         padding: .5rem 1rem;
         font-size: 1.25rem;
@@ -36,11 +37,20 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-4">
-                <button type="button" onclick="realTimeWindSpeedFunction()" class="btn btn-link btn-lg">
-                    <span id="topLeft">
-                        <h4> NW, 50m/s</h4>
-                    </span>
-                </button>
+                <div class="card bg-light mb-3" style="max-width: 10rem; height: 10rem">
+                    <div class="card-header">Header
+
+                    </div>
+                    <div class="card-body">
+                        <h10 class="card-title">Light card title</h10>
+                        <p class="card-text">Some </p>
+                    </div>
+                </div>
+                <!--                <button type="button" onclick="realTimeWindSpeedFunction()" class="btn btn-link btn-lg">-->
+                <!--                    <span id="topLeft">-->
+                <!--                        <h4> NW, 50m/s</h4>-->
+                <!--                    </span>-->
+                <!--                </button>-->
             </div>
             <div class="col-md-3">
                 <button type="button" class="btn btn-link btn-lg">
@@ -80,37 +90,40 @@
         </div>
 
         <!-- realTime Data  -->
-        <div class="row">
-            <div class="col-lg-12 col-sm-12 col-xs-12">
-                <h2>Smart Sensor Data</h2>
-                <br>
-            </div>
-        </div>
-        <div class="row" style="margin:0px;">
-            <div class="col-md-10">
-                <!-- data-spy 설정, target은 id가 list-example, overflow설정과 높이 설정이 되어야 한다. -->
-                <!-- data-offset은 scrollspy의 갭이다. 즉 list-item1의 위치가 처음 나왔을 때, 얼마나 전에 나오는지,
-                즉 200이라고 쓰면 div 크기가 200이가 때문에 Item 2가 나오기도 전에 button active가 바뀐다.-->
-                <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example"
-                     style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "
-                     onclick="this.select()" onfocus="this.select()">
-                                        <h4 id="list-item-1">Sensor</h4>
-                                        센서정보 센서정보
-                                        <h4 id="list-item-2">Item 2</h4>
-                                        ...
-                                        <h4 id="list-item-3">Item 3</h4>
-                                        ...
-                                        <h4 id="list-item-4">Item 4</h4>
-                                        ...
-                    <span id="smartSensorData">
-                        <h5>DCU: dcu1:  </h5>
-                    </span>
+        <div class="card">
+            <h2 class="card-header">Smart Sensor Data</h2>
+            <div class="card-body">
+
+                <p class="card-text">
+                <div class="row" style="margin:0px;">
+                    <div class="col-md-10">
+                        <!-- data-spy 설정, target은 id가 list-example, overflow설정과 높이 설정이 되어야 한다. -->
+                        <!-- data-offset은 scrollspy의 갭이다. 즉 list-item1의 위치가 처음 나왔을 때, 얼마나 전에 나오는지,
+                        즉 200이라고 쓰면 div 크기가 200이가 때문에 Item 2가 나오기도 전에 button active가 바뀐다.-->
+                        <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example"
+                             style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "
+                             onclick="this.select()" onfocus="this.select()">
+                            <h4 id="list-item-1">Sensor</h4>
+                            센서정보 센서정보
+                            <h4 id="list-item-2">Item 2</h4>
+                            ...
+                            <h4 id="list-item-3">Item 3</h4>
+                            ...
+                            <h4 id="list-item-4">Item 4</h4>
+                            ...
+                            <span id="smartSensorData"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-2" style="text-align: right">
+                        <button type="button" onclick="sensorDataWarningFunction()" class="btn btn-success btn-lg"
+                                style="float: left">Warning
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-2" style="text-align: right">
-                <button type="button" onclick="sensorDataWarningFunction()" class="btn btn-success btn-lg" style="float: left">Warning</button>
+                </p>
             </div>
         </div>
+
     </div>
 </div>
 <script>
@@ -155,18 +168,19 @@
     }
 
     function stopWindInterVal() {
-        if(typeof  windIntervval !== 'undefined') {
+        if (typeof windIntervval !== 'undefined') {
             clearInterval(windIntervval);
         }
     }
 
     function sensorDataWarningFunction() {
-        window.open("/popup/alert","MsgWindow", "width=1500,height=800");
+        window.open("/popup/alert", "MsgWindow", "width=1500,height=800");
     }
 
     function realTimeWindSpeedFunction() {
-        window.open("/popup/graph", "MsgWindow" , "width=1800 ,height=950")
+        window.open("/popup/graph", "MsgWindow", "width=1800 ,height=950")
     }
+
     //시작 함수
     $(document).ready(function () {
         //풍속 갱신 지정
@@ -174,6 +188,37 @@
     });
 
 </script>
+<!--<div class="row">-->
+<!--    <div class="col-lg-12 col-sm-12 col-xs-12">-->
+<!--        <h2>Smart Sensor Data</h2>-->
+<!--        <br>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<div class="row" style="margin:0px;">-->
+<!--    <div class="col-md-10">-->
+<!--        &lt;!&ndash; data-spy 설정, target은 id가 list-example, overflow설정과 높이 설정이 되어야 한다. &ndash;&gt;-->
+<!--        &lt;!&ndash; data-offset은 scrollspy의 갭이다. 즉 list-item1의 위치가 처음 나왔을 때, 얼마나 전에 나오는지,-->
+<!--        즉 200이라고 쓰면 div 크기가 200이가 때문에 Item 2가 나오기도 전에 button active가 바뀐다.&ndash;&gt;-->
+<!--        <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example"-->
+<!--             style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "-->
+<!--             onclick="this.select()" onfocus="this.select()">-->
+<!--            <h4 id="list-item-1">Sensor</h4>-->
+<!--            센서정보 센서정보-->
+<!--            <h4 id="list-item-2">Item 2</h4>-->
+<!--            ...-->
+<!--            <h4 id="list-item-3">Item 3</h4>-->
+<!--            ...-->
+<!--            <h4 id="list-item-4">Item 4</h4>-->
+<!--            ...-->
+<!--            <span id="smartSensorData"></span>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <div class="col-md-2" style="text-align: right">-->
+<!--        <button type="button" onclick="sensorDataWarningFunction()" class="btn btn-success btn-lg"-->
+<!--                style="float: left">Warning-->
+<!--        </button>-->
+<!--    </div>-->
+<!--</div>-->
 
 </body>
 </html>
