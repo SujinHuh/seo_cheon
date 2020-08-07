@@ -31,36 +31,9 @@
 <body class="bg-light">
 <div class="container">
     <br>
+    <!-- 실시간 풍향/풍속 ()-->
     <div class="container">
 
-        <!-- 실시간 풍향/풍속 ()-->
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-4">
-                <div class="card bg-light mb-3" style="max-width: 10rem; height: 10rem">
-                    <div class="card-header">Header
-
-                    </div>
-                    <div class="card-body">
-                        <h10 class="card-title">Light card title</h10>
-                        <p class="card-text">Some </p>
-                    </div>
-                </div>
-                <!--                <button type="button" onclick="realTimeWindSpeedFunction()" class="btn btn-link btn-lg">-->
-                <!--                    <span id="topLeft">-->
-                <!--                        <h4> NW, 50m/s</h4>-->
-                <!--                    </span>-->
-                <!--                </button>-->
-            </div>
-            <div class="col-md-3">
-                <button type="button" class="btn btn-link btn-lg">
-                    <span id="topRight">
-                        <h4> NW, 50m/s</h4>
-                    </span>
-                </button>
-            </div>
-        </div>
-        <!-- img -->
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-9">
@@ -70,61 +43,171 @@
             </div>
             <br> <br>
         </div>
-        <!-- 실시간 풍향/풍속 ()-->
-        <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-4">
-                <button type="button" class="btn btn-link btn-lg">
-                  <span id="downLeft">
-                        <h4> NW, 10m/s</h4>
-                  </span>
-                </button>
-            </div>
-            <div class="col-md-3">
-                <button type="button" class="btn btn-link btn-lg">
-                 <span id="downRight">
-                     <h4> NW, 50m/s</h4>
-                 </span>
-                </button>
-            </div>
-        </div>
 
-        <!-- realTime Data  -->
-        <div class="card">
-            <h2 class="card-header">Smart Sensor Data</h2>
-            <div class="card-body">
-
-                <p class="card-text">
-                <div class="row" style="margin:0px;">
-                    <div class="col-md-10">
-                        <!-- data-spy 설정, target은 id가 list-example, overflow설정과 높이 설정이 되어야 한다. -->
-                        <!-- data-offset은 scrollspy의 갭이다. 즉 list-item1의 위치가 처음 나왔을 때, 얼마나 전에 나오는지,
-                        즉 200이라고 쓰면 div 크기가 200이가 때문에 Item 2가 나오기도 전에 button active가 바뀐다.-->
-                        <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example"
-                             style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "
-                             onclick="this.select()" onfocus="this.select()">
-                            <h4 id="list-item-1">Sensor</h4>
-                            센서정보 센서정보
-                            <h4 id="list-item-2">Item 2</h4>
-                            ...
-                            <h4 id="list-item-3">Item 3</h4>
-                            ...
-                            <h4 id="list-item-4">Item 4</h4>
-                            ...
-                            <span id="smartSensorData"></span>
-                        </div>
-                    </div>
-                    <div class="col-md-2" style="text-align: right">
-                        <button type="button" onclick="sensorDataWarningFunction()" class="btn btn-success btn-lg"
-                                style="float: left">Warning
-                        </button>
-                    </div>
+        <!--top-left-->
+        <div class="top-left">
+            <div class="card bg-light mb-3" style="max-width: 10rem; height: 10rem">
+                <div class="card-header">Sensor 1 </div>
+                <div class="card-body">
+                    <i class="fas fa-wind fa-3x"></i>
+                    &nbsp;
+                    <i class="fas fa-location-arrow fa-3x"></i>
                 </div>
-                </p>
             </div>
         </div>
+
+        <!--top-right-->
+        <div class="top-right">
+            <div class="card bg-light mb-3" style="max-width: 10rem; height: 10rem">
+                <div class="card-header">Sensor 2 </div>
+                <div class="card-body">
+                    <i class="fas fa-wind fa-3x"></i>
+                    &nbsp;
+                    <i class="fas fa-location-arrow fa-3x"></i>
+                </div>
+            </div>
+        </div>
+
+        <!--bottom-left-->
+        <div class="bottom-left">
+            <div class="card bg-light mb-3" style="max-width: 10rem; height: 10rem">
+                <div class="card-header">Sensor 4 </div>
+                <div class="card-body">
+
+                    <i class="fas fa-wind fa-3x"></i>
+                    &nbsp;
+                    <i class="fas fa-location-arrow fa-3x"></i>
+<!--                    <button type="button" class="btn btn-link btn-lg">-->
+<!--                            <span id="downLeft">-->
+
+<!--                                <h4> NW, 10m/s</h4>-->
+<!--                            </span>-->
+<!--                    </button>-->
+                </div>
+            </div>
+        </div>
+
+        <!--bottom-right-->
+        <div class="bottom-right">
+            <div class="card bg-light mb-3" style="max-width: 10rem; height: 10rem">
+                <div class="card-header">Sensor 3
+
+                </div>
+                <div class="card-body">
+
+                        <i class="fas fa-wind fa-3x"></i>
+                        &nbsp;
+                        <i class="fas fa-location-arrow fa-3x"></i>
+                        <button type="button" class="btn btn-link btn-lg">
+                            <span id="downLeft">
+
+                                <h4> NW, 10m/s</h4>
+                            </span>
+                        </button>
+
+                </div>
+            </div>
+        </div>
+
 
     </div>
+
+</div>
+</div>
+<br><br>
+
+<!-- 실시간 풍향/풍속 ()-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-3"></div>-->
+<!--            <div class="col-md-4">-->
+<!--                <div class="card bg-light mb-3" style="max-width: 10rem; height: 10rem">-->
+<!--                    <div class="card-header">Header-->
+
+<!--                    </div>-->
+<!--                    <div class="card-body">-->
+<!--                        <h10 class="card-title">Light card title</h10>-->
+<!--                        <p class="card-text">Some </p>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                &lt;!&ndash;                <button type="button" onclick="realTimeWindSpeedFunction()" class="btn btn-link btn-lg">&ndash;&gt;-->
+<!--                &lt;!&ndash;                    <span id="topLeft">&ndash;&gt;-->
+<!--                &lt;!&ndash;                        <h4> NW, 50m/s</h4>&ndash;&gt;-->
+<!--                &lt;!&ndash;                    </span>&ndash;&gt;-->
+<!--                &lt;!&ndash;                </button>&ndash;&gt;-->
+<!--            </div>-->
+<!--            <div class="col-md-3">-->
+<!--                <button type="button" class="btn btn-link btn-lg">-->
+<!--                    <span id="topRight">-->
+<!--                        <h4> NW, 50m/s</h4>-->
+<!--                    </span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; img &ndash;&gt;-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-3"></div>-->
+<!--            <div class="col-md-9">-->
+<!--                <div>-->
+<!--                    <img th:src="@{/images/home.png}" align="center">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <br> <br>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; 실시간 풍향/풍속 ()&ndash;&gt;-->
+<!--        <div class="row">-->
+<!--            <div class="col-md-3"></div>-->
+<!--            <div class="col-md-4">-->
+<!--                <button type="button" class="btn btn-link btn-lg">-->
+<!--                  <span id="downLeft">-->
+<!--                        <h4> NW, 10m/s</h4>-->
+<!--                  </span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--            <div class="col-md-3">-->
+<!--                <button type="button" class="btn btn-link btn-lg">-->
+<!--                 <span id="downRight">-->
+<!--                     <h4> NW, 50m/s</h4>-->
+<!--                 </span>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+
+<!-- realTime Data  -->
+<div class="card">
+    <h2 class="card-header">Smart Sensor Data</h2>
+    <div class="card-body">
+
+        <p class="card-text">
+        <div class="row" style="margin:0px;">
+            <div class="col-md-10">
+                <!-- data-spy 설정, target은 id가 list-example, overflow설정과 높이 설정이 되어야 한다. -->
+                <!-- data-offset은 scrollspy의 갭이다. 즉 list-item1의 위치가 처음 나왔을 때, 얼마나 전에 나오는지,
+                즉 200이라고 쓰면 div 크기가 200이가 때문에 Item 2가 나오기도 전에 button active가 바뀐다.-->
+                <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example"
+                     style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "
+                     onclick="this.select()" onfocus="this.select()">
+                    <h4 id="list-item-1">Sensor</h4>
+                    센서정보 센서정보
+                    <h4 id="list-item-2">Item 2</h4>
+                    ...
+                    <h4 id="list-item-3">Item 3</h4>
+                    ...
+                    <h4 id="list-item-4">Item 4</h4>
+                    ...
+                    <span id="smartSensorData"></span>
+                </div>
+            </div>
+            <div class="col-md-2" style="text-align: right">
+                <button type="button" onclick="sensorDataWarningFunction()" class="btn btn-success btn-lg"
+                        style="float: left">Warning
+                </button>
+            </div>
+        </div>
+        </p>
+    </div>
+</div>
+
+</div>
 </div>
 <script>
 
@@ -188,37 +271,5 @@
     });
 
 </script>
-<!--<div class="row">-->
-<!--    <div class="col-lg-12 col-sm-12 col-xs-12">-->
-<!--        <h2>Smart Sensor Data</h2>-->
-<!--        <br>-->
-<!--    </div>-->
-<!--</div>-->
-<!--<div class="row" style="margin:0px;">-->
-<!--    <div class="col-md-10">-->
-<!--        &lt;!&ndash; data-spy 설정, target은 id가 list-example, overflow설정과 높이 설정이 되어야 한다. &ndash;&gt;-->
-<!--        &lt;!&ndash; data-offset은 scrollspy의 갭이다. 즉 list-item1의 위치가 처음 나왔을 때, 얼마나 전에 나오는지,-->
-<!--        즉 200이라고 쓰면 div 크기가 200이가 때문에 Item 2가 나오기도 전에 button active가 바뀐다.&ndash;&gt;-->
-<!--        <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example"-->
-<!--             style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "-->
-<!--             onclick="this.select()" onfocus="this.select()">-->
-<!--            <h4 id="list-item-1">Sensor</h4>-->
-<!--            센서정보 센서정보-->
-<!--            <h4 id="list-item-2">Item 2</h4>-->
-<!--            ...-->
-<!--            <h4 id="list-item-3">Item 3</h4>-->
-<!--            ...-->
-<!--            <h4 id="list-item-4">Item 4</h4>-->
-<!--            ...-->
-<!--            <span id="smartSensorData"></span>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="col-md-2" style="text-align: right">-->
-<!--        <button type="button" onclick="sensorDataWarningFunction()" class="btn btn-success btn-lg"-->
-<!--                style="float: left">Warning-->
-<!--        </button>-->
-<!--    </div>-->
-<!--</div>-->
-
 </body>
 </html>

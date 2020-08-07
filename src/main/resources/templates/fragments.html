@@ -12,9 +12,41 @@
     <script src="/webjars/bootstrap/4.5.0/js/bootstrap.bundle.js"></script>
     <script src=/js/common.js></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <style>
         .container {
             max-width: 100%;
+        }
+
+        .bottom-left {
+            position: absolute;
+            bottom: 450px;
+            left: 300px;
+        }
+
+        .top-left {
+            position: absolute;
+            top: 200px;
+            left: 300px;
+        }
+
+        .top-right {
+            position: absolute;
+            top: 200px;
+            right: 356px;
+        }
+
+        .bottom-right {
+            position: absolute;
+            bottom: 450px;
+            right: 356px;
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     </style>
     <style>
@@ -94,21 +126,22 @@
     </style>
 </head>
 <link rel="stylesheet" href="/css/montiring.css"/>
+
 <!--nav Bar-->
 <nav th:fragment="main-nav" class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" >
-       <img src="images/keti.png" alt="" width="100">
-<!--        <img th:src="@{/images/keti.png}" width="1160" height="30">-->
+    <a class="navbar-brand">
+        <img src="images/keti.png" alt="" width="100" style="border: 0;">
+        <!--        <img th:src="@{/images/keti.png}" width="1160" height="30">-->
     </a>
-    <!-- hamburger Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-
-    </button>
-    <br>
 </nav>
-`
+
+<nav th:fragment="update-nav" class="navbar navbar-expand-sm navbar-yellow bg-warning">
+    <th scope="row">Warning</th>
+    <td>Column content</td>
+    <td>Column content</td>
+    <td>Column content</td>
+</nav>
+
 
 <!--Settings-menu -->
 <div th:fragment="settings-menu (currentMenu)" class="list-group">
@@ -123,7 +156,7 @@
 
 <footer th:fragment="footer">
     <div class="row justify-content-center">
-<!--                    <img class="mb-2" src="/images/keti.png" alt="" width="100">-->
+        <!--                    <img class="mb-2" src="/images/keti.png" alt="" width="100">-->
         <small class="d-block mb-3 text-muted">&copy; 영흥발전소저탄장</small>
     </div>
 </footer>
