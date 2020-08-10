@@ -14,6 +14,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <style>
+        .bg-warning {
+            background-color: #f8fb0f5e!important;
+        }
         .container {
             max-width: 100%;
         }
@@ -136,10 +139,10 @@
 </nav>
 
 <nav th:fragment="update-nav" class="navbar navbar-expand-sm navbar-yellow bg-warning">
-    <th scope="row">Warning</th>
-    <td>Column content</td>
-    <td>Column content</td>
-    <td>Column content</td>
+    <th scope="row">업데이트 현재 시간 </th>
+    <div  style="float: right;">
+        <i class="fas fa-sync"></i>
+    </div>
 </nav>
 
 
