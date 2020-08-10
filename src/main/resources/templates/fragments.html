@@ -14,6 +14,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.bundle.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <style>
+        .imageContainer {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 920px;
+        }
+        .imageOutContainer{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 1000px;
+        }
         .bg-warning {
             background-color: #f8fb0f5e!important;
         }
@@ -21,30 +35,29 @@
             max-width: 100%;
         }
 
-        .bottom-left {
-            position: absolute;
-            bottom: 450px;
-            left: 300px;
-        }
-
         .top-left {
             position: absolute;
-            top: 200px;
-            left: 300px;
+            top: -50px;
+            left: -90px;
         }
 
         .top-right {
             position: absolute;
-            top: 200px;
-            right: 356px;
+            top: -50px;
+            right: -90px;
+        }
+
+        .bottom-left {
+            position: absolute;
+            bottom: -90px;
+            left: -90px;
         }
 
         .bottom-right {
             position: absolute;
-            bottom: 450px;
-            right: 356px;
+            bottom: -90px;
+            right: -95px;
         }
-
         .centered {
             position: absolute;
             top: 50%;
