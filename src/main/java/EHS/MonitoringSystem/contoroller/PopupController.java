@@ -5,10 +5,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class menuController {
+public class PopupController {
 
-    @GetMapping("/settings/coalyardMonitoring")
-    public String coalyardMonitorForm(Model model) {
-        return "/index";
+    @GetMapping("popup/graph")
+    public String graph(Model model) {
+        return "popup/graph";
     }
+
 }

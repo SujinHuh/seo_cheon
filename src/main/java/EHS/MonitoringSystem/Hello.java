@@ -14,26 +14,12 @@ public class Hello {
     }
 
 
-    @GetMapping("monitor")
-    public String monitor(Model model) {
-        return "monitor/monitor";
-    }
-
-    @GetMapping("alert/alertconfig")
-    public String alter(Model model) {
-        return "alert/alertconfig";
-    }
-
     @GetMapping("alert/alertconfigEx")
     public String alterEx(Model model) {
         return "alert/alertconfigEx";
     }
 
 
-    @GetMapping("popup/graph")
-    public String graph(Model model) {
-        return "popup/graph";
-    }
 
     @GetMapping("popup/alert")
     public String alert(Model model) {
