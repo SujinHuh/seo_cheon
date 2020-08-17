@@ -4,8 +4,20 @@
 <html xmls:th="http://www.thymeleaf.org">
 
 <head th:replace="fragments.html :: head"></head>
+<style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        min-height: 300px;
+        max-height: 300px;
+        min-width: 50%;
+        max-width: 80%;
+        margin-top: 10px;
+    }
+</style>
 
-<body class="bg-light">
+<body class="bg-light" >
 <!--<p th:text="'hi' + ${data}">반가워</p>-->
 <div th:replace="fragments.html :: main-nav"></div>
 <div class="row">
@@ -13,20 +25,123 @@
     <div class="container">
         <!--  Control Button -->
         <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-9">
-                <br>
-                <h4> DCU ID : " " </h4>
-                <br>
-
-                <canvas id="myChart" width="50" height="50"></canvas>
-
+            <div class="col-lg-12">
+                <div>
+                    <span><h3>temperChart</h3></span>
+                </div>
+                <div class="chart">
+                    <canvas id="temperChart" width="800px" height="300px" ></canvas>
+                </div>
             </div>
         </div>
+    </div>
+</div>
+<div th:replace="fragments.html :: footer"></div>
+</body>
+<script src="/webjars/jquery-ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript" th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/moment.min.js}"></script>
+<script type="text/javascript" th:src="@{/webjars/chart.js/2.8.0/dist/Chart.js}"></script>
+<script th:src="@{/js/chartUtils.js}"></script>
+<script th:src="@{/js/commonChart.js}"></script>
 
-        <div th:replace="fragments.html :: footer"></div>
 
-        <script>
+<script>
+
+    $(document).ready(function() {
+        initChart();
+    });
+
+    var temperChart = null;
+
+    function initChart() {
+        var ctx = document.getElementById("temperChart").getContext("2d");
+        var temperChartData = chartDataSet;
+        temperChart  = new Chart(ctx, {
+            type: 'line',
+            data: temperChartData,
+            options: chartOptions
+        });
+
+        makChart();
+    }
+
+
+    function makChart()  {
+        var param   =  function() {
+            var now = moment(new Date(new Date().toISOString())).format('YYYY-MM-DD 00:00:00');
+            var startDate =  moment(now).utc().format('YYYY-MM-DD HH:mm:ss');
+            var endDate = moment(startDate).add(24, 'hours').format('YYYY-MM-DD HH:mm:ss');
+
+            var result = {
+                startDate: startDate,
+                endDate : endDate,
+                sensorId :'IDY001'
+            }
+            return result;
+        }
+
+        console.log(param());
+
+        $.ajax({
+            url: '/chart/chartData',
+            type : "post",
+            dataType: "json",
+            data: param(),
+            success : function (data) {
+                if(data.resultCode === 200) {
+                    drawChart(data.labelList, data.chartData);
+                }
+            },
+            fail:function(data){
+                console.log(data)
+            },
+            error: function(data, status, error){
+                console.log(error);
+            }
+        });
+    }
+
+
+    function drawChart(lables, data) {
+        console.log(data);
+        if(typeof data != 'undefined' && data.length > 0){
+            var selectedRange = 'time';
+            var max = maxValue(data);
+            var stepSize = getStepSize(max);
+            var unit = getUnit(selectedRange);
+            var format = getFormat(selectedRange);
+
+            var temperChartData = chartDataSet;
+
+            var chartOpt = getChartOption(max, stepSize, unit, format);
+
+            temperChartData.datasets[0].label = '온도';
+            temperChartData.datasets[0].data = data;
+            temperChartData.datasets[0]['fill'] = false;
+            temperChartData.datasets[0]['borderWidth'] = 2;
+            temperChartData.datasets[0]['cubicInterpolationMode'] = 'monotone';
+
+            temperChart.data = temperChartData;
+            temperChart.options = chartOpt;
+            temperChart.update();
+
+        }
+    }
+
+
+    function getChartOption(max, stepSize, unit, format){
+        var option = chartOptions;
+        option.scales.yAxes[0].ticks.max = 50;
+        option.scales.yAxes[0].ticks.stepSize= 5;
+        return option;
+    }
+
+
+</script>
+
+<!--        <script>
             var ctx = document.getElementById('myChart');
             var myChart = new Chart(ctx, {
                 type: 'bar',
@@ -64,8 +179,5 @@
                     }
                 }
             });
-        </script>
-    </div>
-</div>
-</body>
-</html>
+        </script>-->
+</html  >

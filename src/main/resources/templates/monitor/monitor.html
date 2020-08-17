@@ -1,33 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:xmls="http://www.w3.org/1999/xhtml">
-
-<style>
-
-    .mon.active {
-        padding: .5rem 1rem;
-        font-size: 1.25rem;
-        line-height: 1.5;
-        border-radius: .3rem;
-        display: block;
-        width: 100%;
-        color: #fff;
-        border: 1px solid #13530e;
-        background: #13530e;
-    }
-
-    .mon {
-        padding: .5rem 1rem;
-        font-size: 1.25rem;
-        line-height: 1.5;
-        border-radius: .3rem;
-        display: block;
-        width: 100%;
-        color: #fff;
-        border: 1px solid #c3ffbe;
-        background: #c3ffbe;
-    }
-
-</style>
 <body class="bg-light">
 <div class="container">
     <br>
@@ -207,11 +179,11 @@
     }
 
     function sensorDataWarningFunction() {
-        window.open("/popup/alert", "MsgWindow", "width=1500,height=800");
+        window.open("/popup/alert", "MsgWindow", "width=1200,height=800");
     }
 
     function realTimeWindSpeedFunction() {
-        window.open("/popup/graph", "MsgWindow", "width=1800 ,height=950")
+        window.open("/popup/graph", "MsgWindow", "width=1200 ,height=800")
     }
 
     //시작 함수
