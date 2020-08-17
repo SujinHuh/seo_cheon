@@ -1,14 +1,10 @@
-package EHS.MonitoringSystem;
+package EHS.MonitoringSystem.dataController;
 
 import EHS.MonitoringSystem.vo.SensorInfoVo;
 import EHS.MonitoringSystem.vo.WindInfoVO;
-import ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 //json
@@ -72,13 +68,13 @@ public class SensorDataInfoController {
 
                 data.setTemperature(index);
                 data.setHumidity(index);
-                data.setDirection(index);
-                data.setSpeed(index);
+                data.setWindDirection(index);
+                data.setWindSpeed(index);
                 data.setLux(index);
-                data.setH2(index);
-                data.setEthanol(index);
-                data.setVoc(index);
-                data.setTimestamp(Calendar.getInstance().getTime().toString());
+                data.setRawH2(index);
+                data.setRawEthanol(index);
+                data.setTVoc(index);
+                data.setRCVTime(Calendar.getInstance().getTime().toString());
 
                 sensorData.add(data);
             }
