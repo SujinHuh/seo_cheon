@@ -14,7 +14,11 @@ public class ChartDataService {
     @Autowired
     ChartDataMapper mapper;
 
-    public List<ChartDataVO> getChartData(Map<String, Object> param) throws Exception {
-        return mapper.getChartData(param);
+    public List<ChartDataVO> getTemperChartData(Map<String, Object> param) throws Exception {
+        return mapper.getTemperChartData(param);
+    }
+
+    public List<ChartDataVO> getWindSpdChartData(Map<String, Object> param) throws Exception {
+        return mapper.getWindSpdChartData(param);
     }
 }

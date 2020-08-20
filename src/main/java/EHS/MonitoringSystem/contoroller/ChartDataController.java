@@ -33,31 +33,26 @@ public class ChartDataController {
          param.put("sensorId", sensorId);
 
          List<String> labels = new ArrayList<>();
-         List<ChartDataVO> dataList = null;
+         List<ChartDataVO> temperDataList = null;
+        List<ChartDataVO>  windSpdDataList = null;
 
         try{
 
-            dataList = service.getChartData(param);
+            temperDataList = service.getTemperChartData(param);
+            windSpdDataList = service.getWindSpdChartData(param);
 
 
-            if(dataList == null)  {
+            if(temperDataList == null || windSpdDataList == null)  {
                 result.put("resultCode", 300);
                 result.put("resultMsg", "No chartData");
 
             } else {
-
-
-                for(ChartDataVO vo : dataList) {
-                    labels.add(vo.getX());
-                }
-
-                result.put("labelList", labels);
-
                 result.put("resultCode", 200);
                 result.put("resultMsg", "No chartData");
             }
 
-            result.put("chartData", dataList);
+            result.put("tempData", temperDataList);
+            result.put("windSpdData", temperDataList);
 
          }catch (Exception e) {
              e.printStackTrace();

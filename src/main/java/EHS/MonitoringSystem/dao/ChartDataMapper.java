@@ -11,5 +11,8 @@ import java.util.Map;
 @Repository
 public interface ChartDataMapper {
 
-    List<ChartDataVO> getChartData(Map<String, Object> param) throws  Exception;
+    //온도 차트데이터
+    List<ChartDataVO> getTemperChartData(Map<String, Object> param) throws  Exception;
+    //풍속차트데이터
+    List<ChartDataVO> getWindSpdChartData(Map<String, Object> param) throws  Exception;
 }

@@ -15,6 +15,26 @@
         max-width: 80%;
         margin-top: 10px;
     }
+    .chart {
+        padding-top: 20px;
+        margin-bottom: 10px;
+    }
+    select {
+        width: 120px;
+        padding: .5em .3em;
+        font-family: inherit;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border: 1px solid #999;
+        border-radius: 0px;
+    }
+
+    select::-ms-expand {
+        /* for IE 11 */
+        display: none;
+    }
+
 </style>
 
 <body class="bg-light" >
@@ -25,12 +45,25 @@
     <div class="container">
         <!--  Control Button -->
         <div class="row">
+            <div class="col-lg-6">
+                <span><h3>temperChart</h3></span>
+            </div>
+            <div class="col-lg-6" style="text-align: right">
+                <span style="font-size: 20pt">차트 시간 : </span>
+                <select class="pull-right"  s style="margin-left: 10px;margin-right: 30px;">
+                    <option>5분</option>
+                    <option>24시간</option>
+                    <option>1주일</option>
+                </select>
+            </div>
             <div class="col-lg-12">
-                <div>
-                    <span><h3>temperChart</h3></span>
+                <div class="chart">
+                    <h3>온도차트 </h3>
+                    <canvas id="temperChart" width="800px" height="300px" ></canvas>
                 </div>
                 <div class="chart">
-                    <canvas id="temperChart" width="800px" height="300px" ></canvas>
+                   <h3>풍속 </h3>
+                    <canvas id="windSpdChart" width="800px" height="300px" ></canvas>
                 </div>
             </div>
         </div>
@@ -54,17 +87,33 @@
     });
 
     var temperChart = null;
+    var windSpdChart = null;
+
+    var windIntervval = null;
 
     function initChart() {
-        var ctx = document.getElementById("temperChart").getContext("2d");
+        var tempCtx = document.getElementById("temperChart").getContext("2d");
+        var windSpdCtx = document.getElementById("windSpdChart").getContext("2d");
+
+        //온도 차트 초기화
         var temperChartData = chartDataSet;
-        temperChart  = new Chart(ctx, {
+        temperChart  = new Chart(tempCtx, {
             type: 'line',
             data: temperChartData,
             options: chartOptions
         });
 
+        //풍속차트 초기화
+        var windSpdChartData = chartDataSet;
+        windSpdChart  = new Chart(windSpdCtx, {
+            type: 'line',
+            data: windSpdChartData,
+            options: chartOptions
+        });
+
         makChart();
+        windIntervval = setInterval(makChart, 30000);
+
     }
 
 
@@ -82,7 +131,6 @@
             return result;
         }
 
-        console.log(param());
 
         $.ajax({
             url: '/chart/chartData',
@@ -91,7 +139,7 @@
             data: param(),
             success : function (data) {
                 if(data.resultCode === 200) {
-                    drawChart(data.labelList, data.chartData);
+                    drawCharts(data);
                 }
             },
             fail:function(data){
@@ -104,18 +152,17 @@
     }
 
 
-    function drawChart(lables, data) {
+
+    function drawCharts(data) {
+        drawTemperChart(data.tempData);
+        drawWindSpdChart(data.windSpdData);
+    }
+
+    function drawTemperChart(data) {
         console.log(data);
         if(typeof data != 'undefined' && data.length > 0){
             var selectedRange = 'time';
-            var max = maxValue(data);
-            var stepSize = getStepSize(max);
-            var unit = getUnit(selectedRange);
-            var format = getFormat(selectedRange);
-
             var temperChartData = chartDataSet;
-
-            var chartOpt = getChartOption(max, stepSize, unit, format);
 
             temperChartData.datasets[0].label = '온도';
             temperChartData.datasets[0].data = data;
@@ -124,17 +171,42 @@
             temperChartData.datasets[0]['cubicInterpolationMode'] = 'monotone';
 
             temperChart.data = temperChartData;
-            temperChart.options = chartOpt;
-            temperChart.update();
-
         }
+
+        var chartOpt = getChartOption(85, 10);
+
+        temperChart.options = chartOpt;
+        temperChart.update();
     }
 
 
-    function getChartOption(max, stepSize, unit, format){
+    function drawWindSpdChart(data) {
+        console.log(data);
+        if(typeof data != 'undefined' && data.length > 0){
+            var selectedRange = 'time';
+
+            var windSpdData = chartDataSet;
+
+            windSpdData.datasets[0].label = '풍속';
+            windSpdData.datasets[0].data = data;
+            windSpdData.datasets[0]['fill'] = false;
+            windSpdData.datasets[0]['borderWidth'] = 2;
+            windSpdData.datasets[0]['cubicInterpolationMode'] = 'monotone';
+
+            windSpdChart.data = windSpdData;
+        }
+
+        var chartOpt = getChartOption(600, 50);
+
+        windSpdChart.options = chartOpt;
+        windSpdChart.update();
+    }
+
+
+    function getChartOption(max, stepSize){
         var option = chartOptions;
-        option.scales.yAxes[0].ticks.max = 50;
-        option.scales.yAxes[0].ticks.stepSize= 5;
+        option.scales.yAxes[0].ticks.max = max;
+        option.scales.yAxes[0].ticks.stepSize= stepSize;
         return option;
     }
 
