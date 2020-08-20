@@ -6,5 +6,4 @@ import lombok.Data;
 public class ChartDataVO {
     private String x;
     private long y;
-
 }
