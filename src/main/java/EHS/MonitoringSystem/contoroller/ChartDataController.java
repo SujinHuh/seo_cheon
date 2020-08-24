@@ -34,7 +34,7 @@ public class ChartDataController {
 
          List<String> labels = new ArrayList<>();
          List<ChartDataVO> temperDataList = null;
-        List<ChartDataVO>  windSpdDataList = null;
+         List<ChartDataVO>  windSpdDataList = null;
 
         try{
 
