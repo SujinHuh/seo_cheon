@@ -14,7 +14,7 @@ public class MenuController {
     }
 
     //mainPage
-    @GetMapping("monitor")
+    @GetMapping("/monitor")
     public String monitor(Model model) {
         return "monitor/monitor";
     }

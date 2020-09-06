@@ -105,9 +105,8 @@
                     <!-- data-spy 설정, target은 id가 list-example, overflow설정과 높이 설정이 되어야 한다. -->
                     <!-- data-offset은 scrollspy의 갭이다. 즉 list-item1의 위치가 처음 나왔을 때, 얼마나 전에 나오는지,
                     즉 200이라고 쓰면 div 크기가 200이가 때문에 Item 2가 나오기도 전에 button active가 바뀐다.-->
-                    <div data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example"
-                         style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "
-                         onclick="this.select()" onfocus="this.select()">
+                    <div id= "realTimeData" data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example"
+                         style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; " onclick="this.select()" onfocus="this.select()">
                         <h4 id="list-item-1">Sensor</h4>
                         센서정보 센서정보
                         <h4 id="list-item-2">Item 2</h4>
@@ -131,12 +130,15 @@
 
 </div>
 </div>
+<script th:src="@{/js/common.js}"></script>
+<script th:src="@{/js/moment.min.js}"></script>
 <script>
 
     var windIntervval = null;
+    var realTimeInterVal = null;
 
     function drawWind() {
-
+        console.log('set wind');
         $.ajax({
             url: '/sensor/getWindInfo',
             type: 'post',
@@ -144,7 +146,6 @@
             dataType: 'json',
             data: JSON.stringify({userId: 1}),
             success: function (data) {
-                console.log('don ajax');
                 if (typeof data.windInfo !== 'undefined') {
 
                     $.each(data.windInfo, function (index, obj) {
@@ -169,14 +170,21 @@
 
 
     function setIntervalEVent() {
-        windIntervval = setInterval(drawWind, 1000);
+        windIntervval = setInterval(drawWind, 300000);
+        realTimeInterVal = setInterval(getRealTimedata, 300000);
     }
 
-    function stopWindInterVal() {
+    function stopInterval() {
+
         if (typeof windIntervval !== 'undefined') {
             clearInterval(windIntervval);
         }
+
+        if (typeof realTimeInterVal !== 'undefined') {
+            clearInterval(realTimeInterVal);
+        }
     }
+
 
     function sensorDataWarningFunction() {
         window.open("/popup/alert", "MsgWindow", "width=1200,height=800");
@@ -186,9 +194,57 @@
         window.open("/popup/graph", "MsgWindow", "width=1200 ,height=800")
     }
 
+
+    function getRealTimedata()  {
+        var param   =  function() {
+            var now = moment(new Date(new Date().toISOString())).format('YYYY-MM-DD 00:00:00');
+            var startDate =  moment(now).utc().format('YYYY-MM-DD HH:mm:ss');
+            var endDate = moment(startDate).add(24, 'hours').format('YYYY-MM-DD HH:mm:ss');
+
+            var result = {
+                startDate: startDate,
+                endDate : endDate
+            }
+            return result;
+        }
+
+        $.ajax({
+            url: '/main/data/realTimeData',
+            type: 'post',
+            dataType: 'json',
+            data: param(),
+            success: function (data) {
+                console.log('set realTime');
+                if (typeof data.dataList !== 'undefined') {
+                    var realTimeDiv = $('#realTimeData');
+                    realTimeDiv.empty();
+                    $.each(data.dataList, function (index, obj) {
+                        var contents = $('<h4></h4>');
+                        var idValue = 'list-item-'+ (index+1);
+                        var value = 'sensorId : '  + obj.sensorId +
+                                     ",  windDir : " + obj.windDir + ",  windSpeed : " + obj.windSpeed +
+                                      ",  lux : "+ obj.lux +",  hummidity : "+ obj.hummit +",  date : "+ obj.nowTime;
+
+                        contents.attr('id', idValue);
+                        contents.text(value);
+                        realTimeDiv.append(contents);
+
+
+                    });
+                }
+            },
+            error: function (request, status, error) {
+                console.log(error);
+            }
+        });
+    }
+
+
     //시작 함수
     $(document).ready(function () {
-        //풍속 갱신 지정
+        drawWind();
+        getRealTimedata();
+        //5분갱신 등록
         setIntervalEVent();
     });
 
