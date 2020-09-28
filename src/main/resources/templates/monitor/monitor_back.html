@@ -7,55 +7,84 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
+            <div class="col-md-3"></div>
+            <div class="col-md-9">
                 <div class="imageOutContainer">
-                    <img class="imageContainer" th:src="@{/images/home.png}" align="center" >
+                    <img class="imageContainer" th:src="@{/images/home.png}" align="center">
 
                     <!--top-left-->
                     <div class="top-left">
-                        <div class="card-body">
-                            <button type="button" onclick="realTimeWindSpeedFunction()" class="btn btn-link btn-lg">
+                        <div class="card bg-light mb-3" style="max-width: 10rem; height: 10rem">
+                            <div class="card-header">Sensor 1</div>
+                            <div class="card-body">
+                                <i class="fas fa-wind fa-3x"></i>
+                                &nbsp;
+                                <i class="fas fa-location-arrow fa-3x"></i>
+                                <button type="button" onclick="realTimeWindSpeedFunction()" class="btn btn-link btn-lg">
                               <span id="topLeft">
                                   <h4> NW, 10m/s</h4>
-<!--                                  <img class="windArrow" src="images/windArrow.png">-->
                               </span>
-                            </button>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                     <!--top-right-->
                     <div class="top-right">
-                        <div class="card-body">
-                            <button type="button" class="btn btn-link btn-lg">
+                        <div class="card bg-light mb-3" style="max-width: 10rem; height: 10rem">
+                            <div class="card-header">Sensor 2</div>
+                            <div class="card-body">
+                                <i class="fas fa-wind fa-3x"></i>
+                                &nbsp;
+                                <i class="fas fa-location-arrow fa-3x"></i>
+                                <button type="button" class="btn btn-link btn-lg">
                                          <span id="topRight">
-                                             <h4> NW, 10m/s</h4> </span>
-                            </button>
+                                                <h4> NW, 10m/s</h4> </span>
+                                </button>
+                            </div>
                         </div>
-
                     </div>
 
                     <!--bottom-left-->
                     <div class="bottom-left">
-                        <div class="card-body">
-                            <button type="button" class="btn btn-link btn-lg">
+                        <div class="card bg-light mb-3" style="max-width: 10rem; height: 10rem">
+                            <div class="card-header">Sensor 4</div>
+                            <div class="card-body">
+
+                                <i class="fas fa-wind fa-3x"></i>
+                                &nbsp;
+                                <i class="fas fa-location-arrow fa-3x"></i>
+                                <button type="button" class="btn btn-link btn-lg">
                                          <span id="downLeft">
                                                 <h4> NW, 10m/s</h4> </span>
-                            </button>
+                                </button>
+                            </div>
                         </div>
                     </div>
 
                     <!--bottom-right-->
                     <div class="bottom-right">
-                        <div class="card-body">
-                            <button type="button" class="btn btn-link btn-lg">
+                        <div class="card bg-light mb-3" style="max-width: 10rem; height: 10rem">
+                            <div class="card-header">Sensor 3
+
+                            </div>
+                            <div class="card-body">
+
+                                <i class="fas fa-wind fa-3x"></i>
+                                &nbsp;
+                                <i class="fas fa-location-arrow fa-3x"></i>
+                                <button type="button" class="btn btn-link btn-lg">
                               <span id="downRight">
+
                                   <h4> NW, 10m/s</h4>
                               </span>
-                            </button>
+                                </button>
+
+                            </div>
                         </div>
                     </div>
                 </div>
+
             </div>
             <br> <br>
         </div>
@@ -76,10 +105,8 @@
                     <!-- data-spy 설정, target은 id가 list-example, overflow설정과 높이 설정이 되어야 한다. -->
                     <!-- data-offset은 scrollspy의 갭이다. 즉 list-item1의 위치가 처음 나왔을 때, 얼마나 전에 나오는지,
                     즉 200이라고 쓰면 div 크기가 200이가 때문에 Item 2가 나오기도 전에 button active가 바뀐다.-->
-                    <div id="realTimeData" data-spy="scroll" data-target="#list-example" data-offset="0"
-                         class="scrollspy-example"
-                         style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "
-                         onclick="this.select()" onfocus="this.select()">
+                    <div id= "realTimeData" data-spy="scroll" data-target="#list-example" data-offset="0" class="scrollspy-example"
+                         style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; " onclick="this.select()" onfocus="this.select()">
                         <h4 id="list-item-1">Sensor</h4>
                         센서정보 센서정보
                         <h4 id="list-item-2">Item 2</h4>
@@ -168,15 +195,15 @@
     }
 
 
-    function getRealTimedata() {
-        var param = function () {
+    function getRealTimedata()  {
+        var param   =  function() {
             var now = moment(new Date(new Date().toISOString())).format('YYYY-MM-DD 00:00:00');
-            var startDate = moment(now).utc().format('YYYY-MM-DD HH:mm:ss');
+            var startDate =  moment(now).utc().format('YYYY-MM-DD HH:mm:ss');
             var endDate = moment(startDate).add(24, 'hours').format('YYYY-MM-DD HH:mm:ss');
 
             var result = {
                 startDate: startDate,
-                endDate: endDate
+                endDate : endDate
             }
             return result;
         }
@@ -193,10 +220,10 @@
                     realTimeDiv.empty();
                     $.each(data.dataList, function (index, obj) {
                         var contents = $('<h4></h4>');
-                        var idValue = 'list-item-' + (index + 1);
-                        var value = 'sensorId : ' + obj.sensorId +
-                            ",  windDir : " + obj.windDir + ",  windSpeed : " + obj.windSpeed +
-                            ",  lux : " + obj.lux + ",  hummidity : " + obj.hummit + ",  date : " + obj.nowTime;
+                        var idValue = 'list-item-'+ (index+1);
+                        var value = 'sensorId : '  + obj.sensorId +
+                                     ",  windDir : " + obj.windDir + ",  windSpeed : " + obj.windSpeed +
+                                      ",  lux : "+ obj.lux +",  hummidity : "+ obj.hummit +",  date : "+ obj.nowTime;
 
                         contents.attr('id', idValue);
                         contents.text(value);
