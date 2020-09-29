@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:xmls="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:xmls="http://www.w3.org/1999/xhtml"
+      xmlns:z-index="http://www.w3.org/1999/xhtml">
 <body class="bg-light">
 <div class="container">
     <br>
@@ -10,7 +11,7 @@
             <div class="col-md-1"></div>
             <div class="col-md-10">
                 <div class="imageOutContainer">
-                    <img class="imageContainer" th:src="@{/images/home.png}" align="center" >
+                    <img class="imageContainer" th:src="@{/images/home.png}" align="center">
 
                     <!--top-left-->
                     <div class="top-left">
@@ -18,9 +19,13 @@
                             <button type="button" onclick="realTimeWindSpeedFunction()" class="btn btn-link btn-lg">
                               <span id="topLeft">
                                   <h4> NW, 10m/s</h4>
-<!--                                  <img class="windArrow" src="images/windArrow.png">-->
+                                  <!--                                  <img class="windArrow" src="images/windArrow.png">-->
+
                               </span>
                             </button>
+<!--                            <div class="arrow-top-left">-->
+                                <img class="windArrow" src="images/windArrow.png">
+                            </div>
                         </div>
                     </div>
 
