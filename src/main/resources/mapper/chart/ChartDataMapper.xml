@@ -4,35 +4,44 @@
 
     <select id="getTemperChartData" parameterType="java.util.HashMap" resultType="EHS.MonitoringSystem.vo.ChartDataVO">
 
-        SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), @@session.time_zone, '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
-               Temperature AS y
-        from (
-                SELECT RCVTime, Temperature
-                FROM powerplant1_env
-                WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
-                    AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
-                    AND SensorID =  #{sensorId}
-             )a
-        where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
-        order by RCVTime asc
+      SELECT x,
+             ROUND(AVG(y), 0) as y
+      FROM(
+                SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), @@session.time_zone, '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
+                       Temperature AS y
+                from (
+                        SELECT RCVTime, Temperature
+                        FROM powerplant1_env
+                        WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
+                            AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
+                            AND SensorID =  #{sensorId}
+                     )a
+                where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
+        )TEMP
+        GROUP BY x
+        order by x asc
 
     </select>
 
 
     <select id="getWindSpdChartData" parameterType="java.util.HashMap" resultType="EHS.MonitoringSystem.vo.ChartDataVO">
-
-        SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), @@session.time_zone, '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
-               WindSpeed AS y
-        from (
-                SELECT RCVTime,
-                       WindSpeed
-                FROM powerplant1_env
-                WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
-                    AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
-                    AND SensorID =  #{sensorId}
-             )a
-        where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
-        order by RCVTime asc
+      SELECT x,
+             ROUND(AVG(y), 0) as y
+      FROM(
+                SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), @@session.time_zone, '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
+                       WindSpeed AS y
+                from (
+                        SELECT RCVTime,
+                               WindSpeed
+                        FROM powerplant1_env
+                        WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
+                            AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
+                            AND SensorID =  #{sensorId}
+                     )a
+                where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
+          )TEMP
+       GROUP BY x
+       order by x asc
 
     </select>
 
