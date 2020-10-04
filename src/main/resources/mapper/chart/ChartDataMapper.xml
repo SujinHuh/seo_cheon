@@ -7,7 +7,7 @@
       SELECT x,
              ROUND(AVG(y), 0) as y
       FROM(
-                SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), @@session.time_zone, '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
+                SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'),'+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
                        Temperature AS y
                 from (
                         SELECT RCVTime, Temperature
@@ -28,7 +28,7 @@
       SELECT x,
              ROUND(AVG(y), 0) as y
       FROM(
-                SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), @@session.time_zone, '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
+                SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'),'+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
                        WindSpeed AS y
                 from (
                         SELECT RCVTime,

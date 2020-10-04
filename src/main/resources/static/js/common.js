@@ -1,5 +1,6 @@
 
-var chartOptions = {
+var
+	chartOptions = {
 		scaleShowVerticalLines: false,
 		responsive: true,
 		legend: {
@@ -10,7 +11,7 @@ var chartOptions = {
 				type: 'time',
 				time: {
 					unit: 'hour',
-					stepSize: 0.5,
+					stepSize: 0.3,
 					displayFormats: {
 						hour: 'HH:mm'
 					}
