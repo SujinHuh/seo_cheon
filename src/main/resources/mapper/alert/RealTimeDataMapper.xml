@@ -7,16 +7,16 @@
 
         SELECT *
         FROM (
-                  SELECT  senser_id as sensorId,
-                          concat(wind_dir, ' °')   as  windDir,
-                          concat(wind_spd, ' m/s') as  windSpeed,
-                          count(*) over (partition by senser_id  order by rcv_time desc) cnt,
+                  SELECT  SensorID as sensorId,
+                          concat(WindDirection, ' °')   as  windDir,
+                          concat(WindSpeed, ' m/s') as  windSpeed,
+                          count(*) over (partition by SensorID  order by RCVTime desc) cnt,
                           lux,
-                          concat(humit, ' %') as   hummit,
-                          DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(rcv_time, '%Y-%m-%d %H:%i:00'), @@session.time_zone, '+09:00')  ,'%Y-%m-%d %H:%i:00') as nowTime
+                          concat(Humidity, ' %') as   hummit,
+                          DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), @@session.time_zone, '+09:00')  ,'%Y-%m-%d %H:%i:00') as nowTime
                   FROM powerplant1_env
-                  WHERE date_format(rcv_time, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
-                      AND date_format(rcv_time, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
+                  WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
+                      AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
                )data
         WHERE cnt = 1
         ORDER BY sensorId ASC
