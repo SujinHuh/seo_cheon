@@ -11,7 +11,7 @@ var
 				type: 'time',
 				time: {
 					unit: 'hour',
-					stepSize: 0.3,
+					stepSize: 0.5,
 					displayFormats: {
 						hour: 'HH:mm'
 					}
