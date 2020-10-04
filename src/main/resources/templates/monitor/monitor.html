@@ -16,7 +16,7 @@
                     <!--top-left-->
                     <div class="top-left">
                         <div class="card-body">
-                            <button type="button" onclick="realTimeWindSpeedFunction()" class="btn btn-link btn-lg">
+                            <button type="button" onclick="realTimeGraphpopup('id2000')" class="btn btn-link btn-lg">
                               <span id="topLeft">
                                   <h4> NW, 10m/s</h4>
                                   <!--                                  <img class="windArrow" src="images/windArrow.png">-->
@@ -32,7 +32,7 @@
                     <!--top-right-->
                     <div class="top-right">
                         <div class="card-body">
-                            <button type="button" class="btn btn-link btn-lg">
+                            <button type="button" onclick="realTimeGraphpopup('id2001')" class="btn btn-link btn-lg">
                                          <span id="topRight">
                                              <h4> NW, 10m/s</h4> </span>
                             </button>
@@ -43,7 +43,7 @@
                     <!--bottom-left-->
                     <div class="bottom-left">
                         <div class="card-body">
-                            <button type="button" class="btn btn-link btn-lg">
+                            <button type="button" onclick="realTimeGraphpopup('id20002)" class="btn btn-link btn-lg">
                                          <span id="downLeft">
                                                 <h4> NW, 10m/s</h4> </span>
                             </button>
@@ -53,7 +53,7 @@
                     <!--bottom-right-->
                     <div class="bottom-right">
                         <div class="card-body">
-                            <button type="button" class="btn btn-link btn-lg">
+                            <button type="button" onclick="realTimeGraphpopup('id2003')" class="btn btn-link btn-lg">
                               <span id="downRight">
                                   <h4> NW, 10m/s</h4>
                               </span>
@@ -168,8 +168,8 @@
         window.open("/popup/alert", "MsgWindow", "width=1200,height=800");
     }
 
-    function realTimeWindSpeedFunction() {
-        window.open("/popup/graph", "MsgWindow", "width=1200 ,height=800")
+    function realTimeGraphpopup(sensorId) {
+        window.open("/popup/graph?sensorId="+sensorId, "MsgWindow", "width=1200 ,height=800")
     }
 
 

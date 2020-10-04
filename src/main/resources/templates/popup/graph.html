@@ -57,6 +57,7 @@
 <!--                </select>-->
             </div>
             <div class="col-lg-12">
+                <input type="hidden" th:value="${sensorId}" id="sensorId" name = "sensorId">
                 <div class="chart">
                     <h3>온도차트 </h3>
                     <canvas id="temperChart" width="800px" height="300px" ></canvas>
@@ -126,7 +127,7 @@
             var result = {
                 startDate: startDate,
                 endDate : endDate,
-                sensorId :'IDY001'
+                sensorId :$('#sensorId').val()
             }
             return result;
         }
