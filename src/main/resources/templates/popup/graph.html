@@ -15,10 +15,12 @@
         max-width: 80%;
         margin-top: 10px;
     }
+
     .chart {
         padding-top: 20px;
         margin-bottom: 10px;
     }
+
     select {
         width: 120px;
         padding: .5em .3em;
@@ -37,7 +39,7 @@
 
 </style>
 
-<body class="bg-light" >
+<body class="bg-light">
 <!--<p th:text="'hi' + ${data}">반가워</p>-->
 <div th:replace="fragments.html :: main-nav"></div>
 <div class="row">
@@ -45,27 +47,42 @@
     <div class="container">
         <!--  Control Button -->
         <div class="row">
-            <div class="col-lg-6">
-                <span><h3>temperChart</h3></span>
-            </div>
             <div class="col-lg-6" style="text-align: right">
-<!--                <span style="font-size: 20pt">차트 시간 : </span>-->
-<!--                <select class="pull-right"  s style="margin-left: 10px;margin-right: 30px;">-->
-<!--                    <option>5분</option>-->
-<!--                    <option>24시간</option>-->
-<!--                    <option>1주일</option>-->
-<!--                </select>-->
+                <!--                <span style="font-size: 20pt">차트 시간 : </span>-->
+                <!--                <select class="pull-right"  s style="margin-left: 10px;margin-right: 30px;">-->
+                <!--                    <option>5분</option>-->
+                <!--                    <option>24시간</option>-->
+                <!--                    <option>1주일</option>-->
+                <!--                </select>-->
             </div>
             <div class="col-lg-12">
-                <input type="hidden" th:value="${sensorId}" id="sensorId" name = "sensorId">
+                <input type="hidden" th:value="${sensorId}" id="sensorId" name="sensorId">
+
                 <div class="chart">
-                    <h3>온도차트 </h3>
-                    <canvas id="temperChart" width="800px" height="300px" ></canvas>
+                    <h3>windDirChart</h3>
+                    <canvas id="windDirChart" width="800px" height="300px"></canvas>
                 </div>
+
                 <div class="chart">
-                   <h3>풍속 </h3>
-                    <canvas id="windSpdChart" width="800px" height="300px" ></canvas>
+                    <h3>windSpdChart</h3>
+                    <canvas id="windSpdChart" width="800px" height="300px"></canvas>
                 </div>
+
+                <div class="chart">
+                    <h3>temperChart</h3>
+                    <canvas id="temperChart" width="800px" height="300px"></canvas>
+                </div>
+
+                <div class="chart">
+                    <h3>humidityChart</h3>
+                    <canvas id="humidityChart" width="800px" height="300px"></canvas>
+                </div>
+
+                <div class="chart">
+                    <h3>luxChart</h3>
+                    <canvas id="luxChart" width="800px" height="300px"></canvas>
+                </div>
+
             </div>
         </div>
     </div>
@@ -83,12 +100,16 @@
 
 <script>
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         initChart();
     });
 
     var temperChart = null;
     var windSpdChart = null;
+    //
+    var windDirChart = null;
+    var humidityChart = null;
+
 
     var windIntervval = null;
 
@@ -96,9 +117,15 @@
         var tempCtx = document.getElementById("temperChart").getContext("2d");
         var windSpdCtx = document.getElementById("windSpdChart").getContext("2d");
 
+        //
+        var windDirCtx = document.getElementById("windDirChart").getContext("2d");
+        var humidityCtx = document.getElementById("humidityChart").getContext("2d");
+        var luxCtx = document.getElementById("luxChart").getContext("2d");
+
+
         //온도 차트 초기화
         var temperChartData = chartDataSet;
-        temperChart  = new Chart(tempCtx, {
+        temperChart = new Chart(tempCtx, {
             type: 'line',
             data: temperChartData,
             options: chartOptions
@@ -106,9 +133,33 @@
 
         //풍속차트 초기화
         var windSpdChartData = chartDataSet;
-        windSpdChart  = new Chart(windSpdCtx, {
+        windSpdChart = new Chart(windSpdCtx, {
             type: 'line',
             data: windSpdChartData,
+            options: chartOptions
+        });
+
+        //풍향차트 초기화
+        var windDirChartData = chartDataSet;
+        windDirChart = new Chart(windDirCtx, {
+            type: 'line',
+            data: windDirChartData,
+            options: chartOptions
+        });
+
+        //습도차트 초기화
+        var humidityChartData = chartDataSet;
+        humidityChart = new Chart(humidityCtx, {
+            type: 'line',
+            data: humidityChartData,
+            options: chartOptions
+        });
+
+        //조도차트 초기화
+        var luxChartData = chartDataSet;
+        luxChart = new Chart(luxCtx, {
+            type: 'line',
+            data: luxChartData,
             options: chartOptions
         });
 
@@ -118,16 +169,16 @@
     }
 
 
-    function makChart()  {
-        var param   =  function() {
+    function makChart() {
+        var param = function () {
             var now = moment(new Date(new Date().toISOString())).format('YYYY-MM-DD 00:00:00');
-            var startDate =  moment(now).utc().format('YYYY-MM-DD HH:mm:ss');
+            var startDate = moment(now).utc().format('YYYY-MM-DD HH:mm:ss');
             var endDate = moment(startDate).add(24, 'hours').format('YYYY-MM-DD HH:mm:ss');
 
             var result = {
                 startDate: startDate,
-                endDate : endDate,
-                sensorId :$('#sensorId').val()
+                endDate: endDate,
+                sensorId: $('#sensorId').val()
             }
             return result;
         }
@@ -135,33 +186,37 @@
 
         $.ajax({
             url: '/chart/chartData',
-            type : "post",
+            type: "post",
             dataType: "json",
             data: param(),
-            success : function (data) {
-                if(data.resultCode === 200) {
+            success: function (data) {
+                if (data.resultCode === 200) {
                     drawCharts(data);
                 }
             },
-            fail:function(data){
+            fail: function (data) {
                 console.log(data)
             },
-            error: function(data, status, error){
+            error: function (data, status, error) {
                 console.log(error);
             }
         });
     }
 
 
-
     function drawCharts(data) {
         drawTemperChart(data.tempData);
         drawWindSpdChart(data.windSpdData);
+
+        //
+        drawWindDirChart(data.windDirData);
+        drawHumidityChart(data.humidityData);
+        drawLuxChart(data.luxData);
     }
 
     function drawTemperChart(data) {
         console.log(data);
-        if(typeof data != 'undefined' && data.length > 0){
+        if (typeof data != 'undefined' && data.length > 0) {
             var selectedRange = 'time';
             var temperChartData = chartDataSet;
 
@@ -174,7 +229,7 @@
             temperChart.data = temperChartData;
         }
 
-        var chartOpt = getChartOption(85, 10);
+        var chartOpt = getChartOption(85, 10); //min -40
 
         temperChart.options = chartOpt;
         temperChart.update();
@@ -183,7 +238,7 @@
 
     function drawWindSpdChart(data) {
         console.log(data);
-        if(typeof data != 'undefined' && data.length > 0){
+        if (typeof data != 'undefined' && data.length > 0) {
             var selectedRange = 'time';
 
             var windSpdData = chartDataSet;
@@ -203,11 +258,83 @@
         windSpdChart.update();
     }
 
+     // 풍향 추가
+    function drawWindDirChart(data) {
+        console.log(data);
+        if (typeof data != 'undefined' && data.length > 0) {
+            var selectedRange = 'time';
 
-    function getChartOption(max, stepSize){
+            var windDirData = chartDataSet;
+
+            windDirData.datasets[0].label = '풍향';
+            windDirData.datasets[0].data = data;
+            windDirData.datasets[0]['fill'] = false;
+            windDirData.datasets[0]['borderWidth'] = 2;
+            windDirData.datasets[0]['cubicInterpolationMode'] = 'monotone';
+
+            windSpdChart.data = windDirData;
+        }
+
+        var chartOpt = getChartOption(359, 45);
+
+        windDirChart.options = chartOpt;
+        windDirChart.update();
+    }
+
+
+    // 습도 추가
+    function drawHumidityChart(data) {
+        console.log(data);
+        if (typeof data != 'undefined' && data.length > 0) {
+            var selectedRange = 'time';
+
+            var humidityData = chartDataSet;
+
+            humidityData.datasets[0].label = '습도';
+            humidityData.datasets[0].data = data;
+            humidityData.datasets[0]['fill'] = false;
+            humidityData.datasets[0]['borderWidth'] = 2;
+            humidityData.datasets[0]['cubicInterpolationMode'] = 'monotone';
+
+
+            humidityChart.data = humidityData;
+        }
+
+        var chartOpt = getChartOption(100, 10);
+
+        humidityChart.options = chartOpt;
+        humidityChart.update();
+    }
+
+
+    // 조도 추가
+    function drawLuxChart(data) {
+        console.log(data);
+        if (typeof data != 'undefined' && data.length > 0) {
+            var selectedRange = 'time';
+
+            var luxData = chartDataSet;
+
+            luxData.datasets[0].label = '습도';
+            luxData.datasets[0].data = data;
+            luxData.datasets[0]['fill'] = false;
+            luxData.datasets[0]['borderWidth'] = 2;
+            luxData.datasets[0]['cubicInterpolationMode'] = 'monotone';
+
+            luxChart.data = luxData;
+        }
+
+        var chartOpt = getChartOption(2000, 100); // 백만 / 천단
+
+        luxChart.options = chartOpt;
+        luxChart.update();
+    }
+
+
+    function getChartOption(max, stepSize) {
         var option = chartOptions;
         option.scales.yAxes[0].ticks.max = max;
-        option.scales.yAxes[0].ticks.stepSize= stepSize;
+        option.scales.yAxes[0].ticks.stepSize = stepSize;
         return option;
     }
 
@@ -253,4 +380,4 @@
                 }
             });
         </script>-->
-</html  >
+</html>

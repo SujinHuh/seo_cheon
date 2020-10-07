@@ -46,6 +46,69 @@
     </select>
 
 
+    <select id="getWindDirChartData" parameterType="java.util.HashMap" resultType="EHS.MonitoringSystem.vo.ChartDataVO">
+      SELECT x,
+             ROUND(AVG(y), 0) as y
+      FROM(
+                SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'),'+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
+                       WindDirection AS y
+                from (
+                        SELECT RCVTime,
+                               WindDirection
+                        FROM powerplant1_env
+                        WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
+                            AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
+                            AND SensorID =  #{sensorId}
+                     )a
+                where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
+          )TEMP
+       GROUP BY x
+       order by x asc
+
+    </select>
+
+    <select id="getHumidityChartData" parameterType="java.util.HashMap" resultType="EHS.MonitoringSystem.vo.ChartDataVO">
+      SELECT x,
+             ROUND(AVG(y), 0) as y
+      FROM(
+                SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'),'+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
+                       Humidity AS y
+                from (
+                        SELECT RCVTime,
+                               Humidity
+                        FROM powerplant1_env
+                        WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
+                            AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
+                            AND SensorID =  #{sensorId}
+                     )a
+                where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
+          )TEMP
+       GROUP BY x
+       order by x asc
+
+    </select>
+
+
+    <select id="getLuxChartData" parameterType="java.util.HashMap" resultType="EHS.MonitoringSystem.vo.ChartDataVO">
+      SELECT x,
+             ROUND(AVG(y), 0) as y
+      FROM(
+                SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'),'+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
+                       Lux AS y
+                from (
+                        SELECT RCVTime,
+                               Lux
+                        FROM powerplant1_env
+                        WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
+                            AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
+                            AND SensorID =  #{sensorId}
+                     )a
+                where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
+          )TEMP
+       GROUP BY x
+       order by x asc
+
+    </select>
 </mapper>
 
 

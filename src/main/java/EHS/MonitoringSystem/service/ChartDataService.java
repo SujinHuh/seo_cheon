@@ -21,4 +21,16 @@ public class ChartDataService {
     public List<ChartDataVO> getWindSpdChartData(Map<String, Object> param) throws Exception {
         return mapper.getWindSpdChartData(param);
     }
+
+    public List<ChartDataVO> getWindDirChartData(Map<String, Object> param) throws Exception {
+        return mapper.getWindDirChartData(param);
+    }
+
+    public List<ChartDataVO> getHumidityChartData(Map<String, Object> param) throws Exception {
+        return mapper.getHumidityChartData(param);
+    }
+
+    public List<ChartDataVO> getLuxChartData(Map<String, Object> param) throws Exception {
+        return mapper.getLuxChartData(param);
+    }
 }
