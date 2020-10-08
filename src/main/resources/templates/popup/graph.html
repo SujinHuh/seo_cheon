@@ -229,13 +229,13 @@
             temperChart.data = temperChartData;
         }
 
-        var chartOpt = getChartOption(85, 10); //min -40
+        var chartOpt = getChartOption(-40,85, 10); //min -40
 
         temperChart.options = chartOpt;
         temperChart.update();
     }
 
-
+// 풍속
     function drawWindSpdChart(data) {
         console.log(data);
         if (typeof data != 'undefined' && data.length > 0) {
@@ -252,7 +252,7 @@
             windSpdChart.data = windSpdData;
         }
 
-        var chartOpt = getChartOption(600, 50);
+        var chartOpt = getChartOption(0,600, 50);
 
         windSpdChart.options = chartOpt;
         windSpdChart.update();
@@ -275,7 +275,7 @@
             windSpdChart.data = windDirData;
         }
 
-        var chartOpt = getChartOption(359, 45);
+        var chartOpt = getChartOption(0,359, 45);
 
         windDirChart.options = chartOpt;
         windDirChart.update();
@@ -300,7 +300,7 @@
             humidityChart.data = humidityData;
         }
 
-        var chartOpt = getChartOption(100, 10);
+        var chartOpt = getChartOption(0,100, 10);
 
         humidityChart.options = chartOpt;
         humidityChart.update();
@@ -315,7 +315,7 @@
 
             var luxData = chartDataSet;
 
-            luxData.datasets[0].label = '습도';
+            luxData.datasets[0].label = '조도';
             luxData.datasets[0].data = data;
             luxData.datasets[0]['fill'] = false;
             luxData.datasets[0]['borderWidth'] = 2;
@@ -324,15 +324,16 @@
             luxChart.data = luxData;
         }
 
-        var chartOpt = getChartOption(2000, 100); // 백만 / 천단
+        var chartOpt = getChartOption(0,100000, 10000); // 십만 10000 / 천단
 
         luxChart.options = chartOpt;
         luxChart.update();
     }
 
 
-    function getChartOption(max, stepSize) {
+    function getChartOption(min,max, stepSize) {
         var option = chartOptions;
+        option.scales.yAxes[0].ticks.min = min;
         option.scales.yAxes[0].ticks.max = max;
         option.scales.yAxes[0].ticks.stepSize = stepSize;
         return option;

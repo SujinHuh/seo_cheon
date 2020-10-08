@@ -61,11 +61,11 @@ public class ChartDataController {
             }
 
             result.put("tempData", temperDataList);
-            result.put("windSpdData", temperDataList);  //질문
+            result.put("windSpdData", windSpdDataList);
 
-            result.put("windDirData", temperDataList);
-            result.put("humidityData", temperDataList);
-            result.put("luxData", temperDataList);
+            result.put("windDirData", windDirDataList);
+            result.put("humidityData", humidityDataList);
+            result.put("luxData", luxDataList);
 
         } catch (Exception e) {
             e.printStackTrace();
