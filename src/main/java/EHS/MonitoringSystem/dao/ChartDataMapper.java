@@ -12,15 +12,17 @@ import java.util.Map;
 public interface ChartDataMapper {
 
     //온도 차트데이터
-    List<ChartDataVO> getTemperChartData(Map<String, Object> param) throws  Exception;
+    List<ChartDataVO> getAirTemperChartData(Map<String, Object> param) throws Exception;
     //풍속차트데이터
-    List<ChartDataVO> getWindSpdChartData(Map<String, Object> param) throws  Exception;
+    List<ChartDataVO> getWindSpdChartData(Map<String, Object> param) throws Exception;
 
     //풍향차트데이터
-    List<ChartDataVO> getWindDirChartData(Map<String, Object> param) throws  Exception;
+    List<ChartDataVO> getWindDirChartData(Map<String, Object> param) throws Exception;
     //습도 차트데이터
-    List<ChartDataVO> getHumidityChartData(Map<String, Object> param) throws  Exception;
+    List<ChartDataVO> getRHumidityChartData(Map<String, Object> param) throws Exception;
     //조도 차트데이터
     List<ChartDataVO> getLuxChartData(Map<String, Object> param) throws  Exception;
+
+    List<ChartDataVO> getAirPressureChartData(Map<String, Object> param) throws  Exception;
 
 }

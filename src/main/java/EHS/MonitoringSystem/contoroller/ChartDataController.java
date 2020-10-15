@@ -33,25 +33,28 @@ public class ChartDataController {
         param.put("sensorId", sensorId);
 
         List<String> labels = new ArrayList<>();
-        List<ChartDataVO> temperDataList = null;
+        List<ChartDataVO> airTemperDataList = null;
         List<ChartDataVO> windSpdDataList = null;
 
         List<ChartDataVO> windDirDataList = null;
-        List<ChartDataVO> humidityDataList = null;
+        List<ChartDataVO> rHumidityDataList = null;
         List<ChartDataVO> luxDataList = null;
+        List<ChartDataVO> airPressureDataList = null;
 
 
         try {
 
-            temperDataList = service.getTemperChartData(param);
+            airTemperDataList = service.getAirTemperChartData(param);
             windSpdDataList = service.getWindSpdChartData(param);
 
             windDirDataList = service.getWindDirChartData(param);
-            humidityDataList = service.getHumidityChartData(param);
+            rHumidityDataList = service.getRHumidityChartData(param);
             luxDataList = service.getLuxChartData(param);
+            airPressureDataList = service.getAirPressureChartData(param);
 
-            if (temperDataList == null || windSpdDataList == null
-                    || windDirDataList == null || humidityDataList == null || luxDataList == null) {
+            if (airTemperDataList == null || windSpdDataList == null
+                    || windDirDataList == null || rHumidityDataList == null || luxDataList == null
+                    || airPressureDataList == null) {
                 result.put("resultCode", 300);
                 result.put("resultMsg", "No chartData");
 
@@ -60,12 +63,13 @@ public class ChartDataController {
                 result.put("resultMsg", "No chartData");
             }
 
-            result.put("tempData", temperDataList);
+            result.put("airTempData", airTemperDataList);
             result.put("windSpdData", windSpdDataList);
 
             result.put("windDirData", windDirDataList);
-            result.put("humidityData", humidityDataList);
+            result.put("rHumidityData", rHumidityDataList);
             result.put("luxData", luxDataList);
+            result.put("AirPressureData",airPressureDataList);
 
         } catch (Exception e) {
             e.printStackTrace();

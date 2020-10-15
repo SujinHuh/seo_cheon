@@ -10,7 +10,7 @@ public class RealTimeSensorDataVO {
     private String windDir;
     private String windSpeed;
     private String lux;
-    private String hummit;
+    private String rHummit;
     private String nowTime;
 
 }

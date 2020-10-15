@@ -14,8 +14,8 @@ public class ChartDataService {
     @Autowired
     ChartDataMapper mapper;
 
-    public List<ChartDataVO> getTemperChartData(Map<String, Object> param) throws Exception {
-        return mapper.getTemperChartData(param);
+    public List<ChartDataVO> getAirTemperChartData(Map<String, Object> param) throws Exception {
+        return mapper.getAirTemperChartData(param);
     }
 
     public List<ChartDataVO> getWindSpdChartData(Map<String, Object> param) throws Exception {
@@ -26,11 +26,16 @@ public class ChartDataService {
         return mapper.getWindDirChartData(param);
     }
 
-    public List<ChartDataVO> getHumidityChartData(Map<String, Object> param) throws Exception {
-        return mapper.getHumidityChartData(param);
+    public List<ChartDataVO> getRHumidityChartData(Map<String, Object> param) throws Exception {
+        return mapper.getRHumidityChartData(param);
     }
 
     public List<ChartDataVO> getLuxChartData(Map<String, Object> param) throws Exception {
         return mapper.getLuxChartData(param);
     }
+
+    public List<ChartDataVO> getAirPressureChartData(Map<String, Object> param) throws Exception {
+        return mapper.getAirPressureChartData(param);
+    }
+
 }

@@ -59,27 +59,32 @@
                 <input type="hidden" th:value="${sensorId}" id="sensorId" name="sensorId">
 
                 <div class="chart">
-                    <h3>windDirChart</h3>
+                    <h3>windDir</h3>
                     <canvas id="windDirChart" width="800px" height="300px"></canvas>
                 </div>
 
                 <div class="chart">
-                    <h3>windSpdChart</h3>
+                    <h3>windSpd</h3>
                     <canvas id="windSpdChart" width="800px" height="300px"></canvas>
                 </div>
 
                 <div class="chart">
-                    <h3>temperChart</h3>
-                    <canvas id="temperChart" width="800px" height="300px"></canvas>
+                    <h3>airTemper</h3>
+                    <canvas id="airTemperChart" width="800px" height="300px"></canvas>
                 </div>
 
                 <div class="chart">
-                    <h3>humidityChart</h3>
-                    <canvas id="humidityChart" width="800px" height="300px"></canvas>
+                    <h3>airPressure</h3>
+                    <canvas id="airPressureChart" width="800px" height="300px"></canvas>
                 </div>
 
                 <div class="chart">
-                    <h3>luxChart</h3>
+                    <h3>rHumidity</h3>
+                    <canvas id="rHumidityChart" width="800px" height="300px"></canvas>
+                </div>
+
+                <div class="chart">
+                    <h3>lux</h3>
                     <canvas id="luxChart" width="800px" height="300px"></canvas>
                 </div>
 
@@ -104,30 +109,28 @@
         initChart();
     });
 
-    var temperChart = null;
+    var airTemperChart = null;
     var windSpdChart = null;
-    //
     var windDirChart = null;
-    var humidityChart = null;
-
+    var rHumidityChart = null;
+    var airPressureChart = null;
+    var luxChart = null;
 
     var windIntervval = null;
 
     function initChart() {
-        var tempCtx = document.getElementById("temperChart").getContext("2d");
+        var tempCtx = document.getElementById("airTemperChart").getContext("2d");
         var windSpdCtx = document.getElementById("windSpdChart").getContext("2d");
-
-        //
         var windDirCtx = document.getElementById("windDirChart").getContext("2d");
-        var humidityCtx = document.getElementById("humidityChart").getContext("2d");
+        var humidityCtx = document.getElementById("rHumidityChart").getContext("2d");
         var luxCtx = document.getElementById("luxChart").getContext("2d");
-
+        var airPressureCtx = document.getElementById("airPressureChart").getContext("2d");
 
         //온도 차트 초기화
-        var temperChartData = chartDataSet;
-        temperChart = new Chart(tempCtx, {
+        var airTemperChartData = chartDataSet;
+        airTemperChart = new Chart(tempCtx, {
             type: 'line',
-            data: temperChartData,
+            data: airTemperChartData,
             options: chartOptions
         });
 
@@ -148,10 +151,10 @@
         });
 
         //습도차트 초기화
-        var humidityChartData = chartDataSet;
-        humidityChart = new Chart(humidityCtx, {
+        var rHumidityChartData = chartDataSet;
+        rHumidityChart = new Chart(humidityCtx, {
             type: 'line',
-            data: humidityChartData,
+            data: rHumidityChartData,
             options: chartOptions
         });
 
@@ -160,6 +163,14 @@
         luxChart = new Chart(luxCtx, {
             type: 'line',
             data: luxChartData,
+            options: chartOptions
+        });
+
+        //기압 초기화
+        var airPressureChartData = chartDataSet;
+        airPressureChart = new Chart(airPressureCtx, {
+            type: 'line',
+            data: airPressureChartData,
             options: chartOptions
         });
 
@@ -205,34 +216,33 @@
 
 
     function drawCharts(data) {
-        drawTemperChart(data.tempData);
+        drawAirTemperChart(data.airTemperData);
         drawWindSpdChart(data.windSpdData);
-
-        //
         drawWindDirChart(data.windDirData);
-        drawHumidityChart(data.humidityData);
+        drawRHumidityChart(data.rHumidityData);
         drawLuxChart(data.luxData);
+        drawAirPressureChart(data.airPressureData);
     }
 
-    function drawTemperChart(data) {
+    function drawAirTemperChart(data) {
         console.log(data);
         if (typeof data != 'undefined' && data.length > 0) {
             var selectedRange = 'time';
-            var temperChartData = chartDataSet;
+            var airTemperData = chartDataSet;
 
-            temperChartData.datasets[0].label = '온도';
-            temperChartData.datasets[0].data = data;
-            temperChartData.datasets[0]['fill'] = false;
-            temperChartData.datasets[0]['borderWidth'] = 2;
-            temperChartData.datasets[0]['cubicInterpolationMode'] = 'monotone';
+            airTemperData.datasets[0].label = '온도';
+            airTemperData.datasets[0].data = data;
+            airTemperData.datasets[0]['fill'] = false;
+            airTemperData.datasets[0]['borderWidth'] = 2;
+            airTemperData.datasets[0]['cubicInterpolationMode'] = 'monotone';
 
-            temperChart.data = temperChartData;
+            airTemperChart.data = airTemperData;
         }
 
         var chartOpt = getChartOption(-40,85, 10); //min -40
 
-        temperChart.options = chartOpt;
-        temperChart.update();
+        airTemperChart.options = chartOpt;
+        airTemperChart.update();
     }
 
 // 풍속
@@ -283,27 +293,27 @@
 
 
     // 습도 추가
-    function drawHumidityChart(data) {
+    function drawRHumidityChart(data) {
         console.log(data);
         if (typeof data != 'undefined' && data.length > 0) {
             var selectedRange = 'time';
 
-            var humidityData = chartDataSet;
+            var rHumidityData = chartDataSet;
 
-            humidityData.datasets[0].label = '습도';
-            humidityData.datasets[0].data = data;
-            humidityData.datasets[0]['fill'] = false;
-            humidityData.datasets[0]['borderWidth'] = 2;
-            humidityData.datasets[0]['cubicInterpolationMode'] = 'monotone';
+            rHumidityData.datasets[0].label = '습도';
+            rHumidityData.datasets[0].data = data;
+            rHumidityData.datasets[0]['fill'] = false;
+            rHumidityData.datasets[0]['borderWidth'] = 2;
+            rHumidityData.datasets[0]['cubicInterpolationMode'] = 'monotone';
 
 
-            humidityChart.data = humidityData;
+            rHumidityChart.data = rHumidityData;
         }
 
         var chartOpt = getChartOption(0,100, 10);
 
-        humidityChart.options = chartOpt;
-        humidityChart.update();
+        rHumidityChart.options = chartOpt;
+        rHumidityChart.update();
     }
 
 
@@ -330,7 +340,29 @@
         luxChart.update();
     }
 
+    // 기압 추가
+    function drawAirPressureChart(data) {
+        console.log(data);
+        if (typeof data != 'undefined' && data.length > 0) {
+            var selectedRange = 'time';
 
+            var airPressureData = chartDataSet;
+
+            airPressureData.datasets[0].label = '기압';
+            airPressureData.datasets[0].data = data;
+            airPressureData.datasets[0]['fill'] = false;
+            airPressureData.datasets[0]['borderWidth'] = 2;
+            airPressureData.datasets[0]['cubicInterpolationMode'] = 'monotone';
+
+            airPressureChart.data = airPressureData;
+        }
+
+        var chartOpt = getChartOption(0,200000, 10000);
+
+        airPressureChart.options = chartOpt;
+        airPressureChart.update();
+    }
+    
     function getChartOption(min,max, stepSize) {
         var option = chartOptions;
         option.scales.yAxes[0].ticks.min = min;
