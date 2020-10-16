@@ -101,8 +101,6 @@
 <script type="text/javascript" th:src="@{/webjars/chart.js/2.8.0/dist/Chart.js}"></script>
 <script th:src="@{/js/chartUtils.js}"></script>
 <script th:src="@{/js/commonChart.js}"></script>
-
-
 <script>
 
     $(document).ready(function () {
@@ -127,51 +125,51 @@
         var airPressureCtx = document.getElementById("airPressureChart").getContext("2d");
 
         //온도 차트 초기화
-        var airTemperChartData = chartDataSet;
+        var airTemperChartData = getChartDataSet();
         airTemperChart = new Chart(tempCtx, {
             type: 'line',
             data: airTemperChartData,
-            options: chartOptions
+            options: getChartOpt()
         });
 
         //풍속차트 초기화
-        var windSpdChartData = chartDataSet;
+        var windSpdChartData = getChartDataSet();
         windSpdChart = new Chart(windSpdCtx, {
             type: 'line',
             data: windSpdChartData,
-            options: chartOptions
+            options: getChartOpt()
         });
 
         //풍향차트 초기화
-        var windDirChartData = chartDataSet;
+        var windDirChartData = getChartDataSet();
         windDirChart = new Chart(windDirCtx, {
             type: 'line',
             data: windDirChartData,
-            options: chartOptions
+            options: getChartOpt()
         });
 
         //습도차트 초기화
-        var rHumidityChartData = chartDataSet;
+        var rHumidityChartData = getChartDataSet();
         rHumidityChart = new Chart(humidityCtx, {
             type: 'line',
             data: rHumidityChartData,
-            options: chartOptions
+            options: getChartOpt()
         });
 
         //조도차트 초기화
-        var luxChartData = chartDataSet;
+        var luxChartData = getChartDataSet();
         luxChart = new Chart(luxCtx, {
             type: 'line',
             data: luxChartData,
-            options: chartOptions
+            options: getChartOpt()
         });
 
         //기압 초기화
-        var airPressureChartData = chartDataSet;
+        var airPressureChartData = getChartDataSet();
         airPressureChart = new Chart(airPressureCtx, {
             type: 'line',
             data: airPressureChartData,
-            options: chartOptions
+            options: getChartOpt()
         });
 
         makChart();
@@ -228,7 +226,7 @@
         console.log(data);
         if (typeof data != 'undefined' && data.length > 0) {
             var selectedRange = 'time';
-            var airTemperData = chartDataSet;
+            var airTemperData = getChartDataSet();
 
             airTemperData.datasets[0].label = '온도';
             airTemperData.datasets[0].data = data;
@@ -251,7 +249,7 @@
         if (typeof data != 'undefined' && data.length > 0) {
             var selectedRange = 'time';
 
-            var windSpdData = chartDataSet;
+            var windSpdData = getChartDataSet();
 
             windSpdData.datasets[0].label = '풍속';
             windSpdData.datasets[0].data = data;
@@ -262,7 +260,7 @@
             windSpdChart.data = windSpdData;
         }
 
-        var chartOpt = getChartOption(0,600, 50);
+        var chartOpt = getChartOption(0,6000, 1000);
 
         windSpdChart.options = chartOpt;
         windSpdChart.update();
@@ -274,7 +272,7 @@
         if (typeof data != 'undefined' && data.length > 0) {
             var selectedRange = 'time';
 
-            var windDirData = chartDataSet;
+            var windDirData = getChartDataSet();
 
             windDirData.datasets[0].label = '풍향';
             windDirData.datasets[0].data = data;
@@ -298,8 +296,8 @@
         if (typeof data != 'undefined' && data.length > 0) {
             var selectedRange = 'time';
 
-            var rHumidityData = chartDataSet;
-
+            var rHumidit = {};
+            var rHumidityData = getChartDataSet();
             rHumidityData.datasets[0].label = '습도';
             rHumidityData.datasets[0].data = data;
             rHumidityData.datasets[0]['fill'] = false;
@@ -323,7 +321,7 @@
         if (typeof data != 'undefined' && data.length > 0) {
             var selectedRange = 'time';
 
-            var luxData = chartDataSet;
+            var luxData = getChartDataSet();
 
             luxData.datasets[0].label = '조도';
             luxData.datasets[0].data = data;
@@ -346,7 +344,7 @@
         if (typeof data != 'undefined' && data.length > 0) {
             var selectedRange = 'time';
 
-            var airPressureData = chartDataSet;
+            var airPressureData = getChartDataSet();
 
             airPressureData.datasets[0].label = '기압';
             airPressureData.datasets[0].data = data;
@@ -364,7 +362,7 @@
     }
     
     function getChartOption(min,max, stepSize) {
-        var option = chartOptions;
+        var option = getChartOpt();
         option.scales.yAxes[0].ticks.min = min;
         option.scales.yAxes[0].ticks.max = max;
         option.scales.yAxes[0].ticks.stepSize = stepSize;

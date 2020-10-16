@@ -1,6 +1,6 @@
 
-var
-	chartOptions = {
+function getChartOpt() {
+	let chartOptions = {
 		scaleShowVerticalLines: false,
 		responsive: true,
 		legend: {
@@ -19,25 +19,31 @@ var
 			}],
 			yAxes: [{
 				ticks: {
-					min :0,
-					max : 100,
+					min: 0,
+					max: 100,
 					stepSize: 10
 				},
 			}]
 		}
-};
+	};
+	return chartOptions;
+}
 
+function getChartDataSet() {
 
-var chartDataSet = {
-	labels: [],
-	datasets: [
-		{
-			label: '',
-			borderColor: 'blue',
-			data: []
-		}
-	]
-};
+	let chartDataSet = {
+		labels: [],
+		datasets: [
+			{
+				label: '',
+				borderColor: 'blue',
+				data: []
+			}
+		]
+	};
+
+	return chartDataSet;
+}
 
 
 	var tempid =null;
