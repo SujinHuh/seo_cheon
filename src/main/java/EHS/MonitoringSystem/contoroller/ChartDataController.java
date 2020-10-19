@@ -40,7 +40,7 @@ public class ChartDataController {
         List<ChartDataVO> rHumidityDataList = null;
         List<ChartDataVO> luxDataList = null;
         List<ChartDataVO> airPressureDataList = null;
-
+        List<ChartDataVO> vBatDataList = null;
 
         try {
 
@@ -51,10 +51,11 @@ public class ChartDataController {
             rHumidityDataList = service.getRHumidityChartData(param);
             luxDataList = service.getLuxChartData(param);
             airPressureDataList = service.getAirPressureChartData(param);
+            vBatDataList = service.getVBatChartData(param);
 
             if (airTemperDataList == null || windSpdDataList == null
                     || windDirDataList == null || rHumidityDataList == null || luxDataList == null
-                    || airPressureDataList == null) {
+                    || airPressureDataList == null || vBatDataList == null) {
                 result.put("resultCode", 300);
                 result.put("resultMsg", "No chartData");
 
@@ -69,7 +70,8 @@ public class ChartDataController {
             result.put("windDirData", windDirDataList);
             result.put("rHumidityData", rHumidityDataList);
             result.put("luxData", luxDataList);
-            result.put("AirPressureData",airPressureDataList);
+            result.put("airPressureData",airPressureDataList);
+            result.put("vBatData", vBatDataList);
 
         } catch (Exception e) {
             e.printStackTrace();

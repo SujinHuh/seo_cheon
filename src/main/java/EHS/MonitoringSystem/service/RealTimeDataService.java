@@ -2,6 +2,7 @@ package EHS.MonitoringSystem.service;
 
 import EHS.MonitoringSystem.dao.RealTimeDataMapper;
 import EHS.MonitoringSystem.vo.RealTimeSensorDataVO;
+import EHS.MonitoringSystem.vo.WindInfoVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,4 +18,8 @@ public class RealTimeDataService {
     public List<RealTimeSensorDataVO> getRealTimeData(Map<String, Object> param) throws Exception {
         return mapper.getGatherData(param);
     }
+
+//    public WindInfoVO getMainSensorInfo(Map<String, Object> param) throws Exception {
+//        return mapper.getMainSensorInfo(param);
+//    }
 }

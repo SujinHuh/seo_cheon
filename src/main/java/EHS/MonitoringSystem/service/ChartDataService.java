@@ -38,4 +38,8 @@ public class ChartDataService {
         return mapper.getAirPressureChartData(param);
     }
 
+    public List<ChartDataVO> getVBatChartData(Map<String, Object> param) throws Exception {
+        return mapper.getVBatChartData(param);
+    }
 }
+
