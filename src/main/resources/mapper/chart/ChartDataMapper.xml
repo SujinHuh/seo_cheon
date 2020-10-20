@@ -33,7 +33,7 @@
                        WindSpeed AS y
                 from (
                         SELECT RCVTime,
-                               WindSpeed
+                               ROUND(WindSpeed / 100 , 0) As WindSpeed
                         FROM pier_env
                         WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')

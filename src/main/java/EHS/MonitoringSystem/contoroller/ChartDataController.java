@@ -64,7 +64,7 @@ public class ChartDataController {
                 result.put("resultMsg", "No chartData");
             }
 
-            result.put("airTempData", airTemperDataList);
+            result.put("airTemperData", airTemperDataList);  // airTempData --> airTemperData
             result.put("windSpdData", windSpdDataList);
 
             result.put("windDirData", windDirDataList);
