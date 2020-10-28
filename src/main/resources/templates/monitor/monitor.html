@@ -16,95 +16,88 @@
                     <!--top-left-->
                     <div class="top-left">
                         <div class="card-body">
-                            <button type="button" onclick="realTimeGraphpopup('SSC00000')" class="btn btn-link btn-lg">
+                            <button type="button" onclick="realTimeGraphpopup('id2010')" class="btn btn-link btn-lg">
                               <span id="topLeft">
-                                  <h4> NW, 10m/s</h4>
+                                  <h4>id2010</h4>
                                   <!--                                  <img class="windArrow" src="images/dir_E.png">-->
 
                               </span>
                             </button>
-<!--                            <div class="arrow-top-left">-->
-<!--                                <img class="windArrow" src="images/dir_E.png">-->
-                            </div>
+                            <!--                            <div class="arrow-top-left">-->
+                            <!--                                <img class="windArrow" src="images/dir_E.png">-->
                         </div>
                     </div>
+                </div>
 
-                    <!--top-right-->
-                    <div class="top-right">
-                        <div class="card-body">
-                            <button type="button" onclick="realTimeGraphpopup('id2001')" class="btn btn-link btn-lg">
+                <!--top-right-->
+                <div class="top-right">
+                    <div class="card-body">
+                        <button type="button" onclick="realTimeGraphpopup('id2002')" class="btn btn-link btn-lg">
                                          <span id="topRight">
-                                             <h4> NW, 10m/s</h4> </span>
-                            </button>
-                        </div>
-
+                                             <h4>id2002</h4> </span>
+                        </button>
                     </div>
 
-                    <!--bottom-left-->
-                    <div class="bottom-left">
-                        <div class="card-body">
-                            <button type="button" onclick="realTimeGraphpopup('id20002')" class="btn btn-link btn-lg">
+                </div>
+
+                <!--bottom-left-->
+                <div class="bottom-left">
+                    <div class="card-body">
+                        <button type="button" onclick="realTimeGraphpopup('id20003')" class="btn btn-link btn-lg">
                                          <span id="downLeft">
-                                                <h4> NW, 10m/s</h4> </span>
-                            </button>
-                        </div>
+                                                <h4>id2003</h4> </span>
+                        </button>
                     </div>
+                </div>
 
-                    <!--bottom-right-->
-                    <div class="bottom-right">
-                        <div class="card-body">
-                            <button type="button" onclick="realTimeGraphpopup('id2003')" class="btn btn-link btn-lg">
+                <!--bottom-right-->
+                <div class="bottom-right">
+                    <div class="card-body">
+                        <button type="button" onclick="realTimeGraphpopup('id2004')" class="btn btn-link btn-lg">
                               <span id="downRight">
-                                  <h4> NW, 10m/s</h4>
+                                  <h4>id2004</h4>
                               </span>
-                            </button>
-                        </div>
+                        </button>
                     </div>
                 </div>
             </div>
-            <br> <br>
         </div>
-
-
+        <br> <br>
     </div>
 
-    <br><br><br><br><br><br>
 
-    <!-- realTime Data  -->
-    <div class="card">
-        <h2 class="card-header">Smart Sensor Data</h2>
-        <div class="card-body">
+</div>
 
-            <p class="card-text">
-            <div class="row" style="margin:0px;">
-                <div class="col-md-10">
-                    <!-- data-spy 설정, target은 id가 list-example, overflow설정과 높이 설정이 되어야 한다. -->
-                    <!-- data-offset은 scrollspy의 갭이다. 즉 list-item1의 위치가 처음 나왔을 때, 얼마나 전에 나오는지,
-                    즉 200이라고 쓰면 div 크기가 200이가 때문에 Item 2가 나오기도 전에 button active가 바뀐다.-->
-                    <div id="realTimeData" data-spy="scroll" data-target="#list-example" data-offset="0"
-                         class="scrollspy-example"
-                         style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "
-                         onclick="this.select()" onfocus="this.select()">
-<!--                        <h4 id="list-item-1">Sensor</h4>-->
-<!--                        센서정보 센서정보-->
-<!--                        <h4 id="list-item-2">Item 2</h4>-->
-<!--                        ...-->
-<!--                        <h4 id="list-item-3">Item 3</h4>-->
-<!--                        ...-->
-<!--                        <h4 id="list-item-4">Item 4</h4>-->
-<!--                        ...-->
-                        <span id="smartSensorData"></span>
-                    </div>
-                </div>
-                <div class="col-md-2" style="text-align: right">
-                    <button type="button" onclick="sensorDataWarningFunction()" class="btn btn-success btn-lg"
-                            style="float: left">Warning
-                    </button>
+<br><br><br><br><br><br>
+
+<!-- realTime Data  -->
+<div class="card">
+    <h2 class="card-header">Smart Sensor Data</h2>
+    <div class="card-body">
+
+        <p class="card-text">
+        <div class="row" style="margin:0px;">
+            <div class="col-md-10">
+                <!-- data-spy 설정, target은 id가 list-example, overflow설정과 높이 설정이 되어야 한다. -->
+                <!-- data-offset은 scrollspy의 갭이다. 즉 list-item1의 위치가 처음 나왔을 때, 얼마나 전에 나오는지,
+                즉 200이라고 쓰면 div 크기가 200이가 때문에 Item 2가 나오기도 전에 button active가 바뀐다.-->
+                <div id="realTimeData" data-spy="scroll" data-target="#list-example" data-offset="0"
+                     class="scrollspy-example"
+                     style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "
+                     onclick="this.select()" onfocus="this.select()">
+
+                    <span id="smartSensorData"></span>
                 </div>
             </div>
-            </p>
+            <div class="col-md-2" style="text-align: right">
+                <button type="button" onclick="sensorDataWarningFunction()" class="btn btn-success btn-lg"
+                        style="float: left">Warning
+                </button>
+            </div>
         </div>
+        </p>
     </div>
+</div>
 
 </div>
 </div>
@@ -118,23 +111,23 @@
     function drawWind() {
         console.log('set wind');
         $.ajax({
-            url: '/sensor/getWindInfo',
+            url: '/main/data/getWindInfo',
             type: 'post',
             contentType: 'application/json',
             dataType: 'json',
-            data: JSON.stringify({userId: 1}),
+            data: 'windInfo', // null
             success: function (data) {
                 if (typeof data.windInfo !== 'undefined') {
 
                     $.each(data.windInfo, function (index, obj) {
                         if (index == 0) {
-                            $('#topLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + " m/s</h4>");
+                            $('#topLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
                         } else if (index == 1) {
-                            $('#topRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + " m/s</h4>");
+                            $('#topRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
                         } else if (index == 2) {
-                            $('#downLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + " m/s</h4>");
+                            $('#downLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
                         } else if (index == 3) {
-                            $('#downRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + " m/s</h4>");
+                            $('#downRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
 
                         }
                     });
@@ -169,7 +162,7 @@
     }
 
     function realTimeGraphpopup(sensorId) {
-        window.open("/popup/graph?sensorId="+sensorId, "MsgWindow", "width=1200 ,height=800")
+        window.open("/popup/graph?sensorId=" + sensorId, "MsgWindow", "width=1200 ,height=800")
     }
 
 

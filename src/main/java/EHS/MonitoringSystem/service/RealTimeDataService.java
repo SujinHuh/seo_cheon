@@ -19,7 +19,7 @@ public class RealTimeDataService {
         return mapper.getGatherData(param);
     }
 
-//    public WindInfoVO getMainSensorInfo(Map<String, Object> param) throws Exception {
-//        return mapper.getMainSensorInfo(param);
-//    }
+    public WindInfoVO getMainSensorInfo(Map<String, Object> param) throws Exception {
+        return mapper.getMainSensorInfo(param);
+    }
 }

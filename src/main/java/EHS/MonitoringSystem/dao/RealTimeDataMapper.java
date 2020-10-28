@@ -2,6 +2,7 @@ package EHS.MonitoringSystem.dao;
 
 
 import EHS.MonitoringSystem.vo.RealTimeSensorDataVO;
+import EHS.MonitoringSystem.vo.WindInfoVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -19,4 +20,12 @@ public interface RealTimeDataMapper {
      * @throws Exception
      */
     List<RealTimeSensorDataVO> getGatherData(Map<String, Object> param) throws  Exception;
+
+    /**
+     * 메인센서 데이터
+     * @param param
+     * @return
+     * @throws Exception
+     */
+    WindInfoVO getMainSensorInfo(Map<String, Object> param) throws Exception;
 }

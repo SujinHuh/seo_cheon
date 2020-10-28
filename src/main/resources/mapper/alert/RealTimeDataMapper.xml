@@ -4,6 +4,32 @@
 <mapper namespace="EHS.MonitoringSystem.dao.RealTimeDataMapper">
 
 
+    <select id="getMainSensorInfo" parameterType="java.util.Map" resultType="EHS.MonitoringSystem.vo.WindInfoVO">
+        <![CDATA[
+                    SELECT  SensorID as sensorId,
+                            case when windDir  = 0  then 'N'
+                                 when windDir > 0 and windDir < 90 then 'NE'
+                                 when windDir = 90 then 'E'
+                                 when windDir > 90 and windDir < 180 then 'SE'
+                                 when windDir  = 180 then 'N'
+                                 when windDir > 180 and windDir < 270 then 'NW'
+                                 when windDir  = 270 then 'W'
+                                 when windDir > 270 and windDir < 360 then 'NW' end as windDir,
+                            WindSpeed as windSpeed
+                            from (
+                            SELECT SensorID,
+                            concat(ROUND(WindSpeed / 100, 0), ' m/s') AS WindSpeed,
+                            WindDirection  as windDir,
+                            RCVTime
+                            FROM pier_env
+                            WHERE SensorID = #{sensorId}
+
+                            )a
+                    ORDER BY  RCVTime DESC
+                    LIMIT 1
+         ]]>
+    </select>
+
     <select id="getGatherData" parameterType="java.util.HashMap"  resultType="EHS.MonitoringSystem.vo.RealTimeSensorDataVO">
 
         SELECT *
@@ -13,7 +39,7 @@
                           concat(ROUND(WindSpeed / 100, 0), ' m/s')  as  windSpeed,
                           count(*) over (partition by SensorID  order by RCVTime desc) cnt,
                           lux,
-                          concat(RHumidity, ' %') as    rHummit,
+                          concat(RHumidity, ' %') as    RHumidity,
                           DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), '+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') as nowTime
                   FROM pier_env
                   WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')

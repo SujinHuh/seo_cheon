@@ -8,6 +8,6 @@ public class WindInfoVO {
 
     private String sensorId;
     private String windDir;
-    private double windSpeed;
+    private String windSpeed;
 
 }
