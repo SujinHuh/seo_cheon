@@ -1,7 +1,6 @@
 package EHS.MonitoringSystem.contoroller;
 
 import EHS.MonitoringSystem.vo.SensorInfoVo;
-import EHS.MonitoringSystem.vo.WindInfoVO;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,7 +34,7 @@ public class SensorDataInfoController {
 //                String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Timestamp());
 
                 data.setTemperature(index);
-                data.setHumidity(index);
+                data.setRHumidity(index);
                 data.setWindDirection(index);
                 data.setWindSpeed(index);
                 data.setLux(index);
