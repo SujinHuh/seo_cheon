@@ -194,7 +194,7 @@
                         var idValue = 'list-item-' + (index + 1);
                         var value = 'sensorId : ' + obj.sensorId +
                             ",  windDir : " + obj.windDir + ",  windSpeed : " + obj.windSpeed +
-                            ",  lux : " + obj.lux + ",  rHumidity : " + obj.rHumidity + ",  date : " + obj.nowTime;
+                            ",  lux : " + obj.lux + ",  rHumidity : " + obj.rhumidity + ",  date : " + obj.nowTime; //rhumidity --카멜식 오류 수정
 
                         contents.attr('id', idValue);
                         contents.text(value);
