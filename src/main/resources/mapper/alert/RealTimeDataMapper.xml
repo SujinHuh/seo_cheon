@@ -56,23 +56,43 @@
 
     </select>
 
-    <select id="getGatherData" parameterType="java.util.HashMap"  resultType="EHS.MonitoringSystem.vo.RealTimeSensorDataVO">
+<!--    <select id="getGatherData" parameterType="java.util.HashMap"  resultType="EHS.MonitoringSystem.vo.RealTimeSensorDataVO">-->
 
-        SELECT *
+<!--        SELECT *-->
+<!--        FROM (-->
+<!--                  SELECT  SensorID as sensorId,-->
+<!--                          concat(WindDirection, ' °')   as  windDir,-->
+<!--                          concat(ROUND(WindSpeed / 100, 0), ' m/s')  as  windSpeed,-->
+<!--                          count(*) over (partition by SensorID  order by RCVTime desc) cnt,-->
+<!--                          lux,-->
+<!--                          concat(RHumidity, ' %') as rHumidity,-->
+<!--                          DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), '+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') as nowTime-->
+<!--                  FROM pier_env-->
+<!--                  WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')-->
+<!--                      AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')-->
+<!--               )data-->
+<!--        WHERE cnt = 1-->
+<!--        ORDER BY sensorId ASC-->
+
+<!--    </select>-->
+
+    <select id="getGatherData" parameterType="java.util.HashMap"  resultType="EHS.MonitoringSystem.vo.RealTimeSensorDataVO">
+        SELECT DISTINCT *
         FROM (
-                  SELECT  SensorID as sensorId,
-                          concat(WindDirection, ' °')   as  windDir,
-                          concat(ROUND(WindSpeed / 100, 0), ' m/s')  as  windSpeed,
-                          count(*) over (partition by SensorID  order by RCVTime desc) cnt,
-                          lux,
-                          concat(RHumidity, ' %') as rHumidity,
-                          DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), '+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') as nowTime
-                  FROM pier_env
-                  WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
+        SELECT  SensorID as sensorId,
+                concat(WindDirection, ' °')   as  windDir,
+                concat(ROUND(WindSpeed / 100, 0), ' m/s')  as  windSpeed,
+                rank() over ( partition by sensorID order by RCVTime desc) cnt,
+                lux,
+                concat(RHumidity, ' %') as rHumidity,
+                DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), '+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') as nowTime
+        FROM pier_env
+        WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
                       AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
-               )data
-        WHERE cnt = 1
-        ORDER BY sensorId ASC
+        )data
+        where cnt = 1
+        ORDER BY cnt ASC
+
     </select>
 
 </mapper>
