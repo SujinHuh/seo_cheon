@@ -5,5 +5,5 @@ import lombok.Data;
 @Data
 public class ChartDataVO {
     private String x;
-    private long y;
+    private double y;
 }

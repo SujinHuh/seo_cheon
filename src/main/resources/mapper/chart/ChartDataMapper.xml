@@ -6,7 +6,7 @@
             resultType="EHS.MonitoringSystem.vo.ChartDataVO">
 
       SELECT x,
-             ROUND(AVG(y), 0) as y
+             ROUND(AVG(y), 2) as y
       FROM(
                 SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'),'+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
                        AirTemperature  AS y
@@ -71,7 +71,7 @@
     <select id="getRHumidityChartData" parameterType="java.util.HashMap"
             resultType="EHS.MonitoringSystem.vo.ChartDataVO">
       SELECT x,
-             ROUND(AVG(y), 0) as y
+             ROUND(AVG(y), 2) as y
       FROM(
                 SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'),'+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
                        RHumidity  AS y
@@ -135,7 +135,7 @@
 
     <select id="getVBatChartData" parameterType="java.util.HashMap" resultType="EHS.MonitoringSystem.vo.ChartDataVO">
       SELECT x,
-             ROUND(AVG(y), 0) as y
+             ROUND(AVG(y), 2) as y
       FROM(
                 SELECT distinct DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'),'+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') AS x,
                        Vbat AS y

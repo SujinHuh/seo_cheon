@@ -13,6 +13,11 @@
     <script src=/js/common.js></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <style>
+        .btn-link {
+            font-weight: 400;
+            color: #fff;
+            text-decoration: none;
+        }
         .imageContainer {
             position: relative;
             display: flex;
@@ -55,14 +60,15 @@
             /*left: -90px;*/
             position: absolute;
             z-index: 6;
-            top: 50px;
-            left: 150px;
+            top: 200px;
+            left: 450px;
         }
 
         .top-right {
             position: absolute;
-            top: -70px;
-            right: -90px;
+            z-index: 6;
+            top: 200px;
+            right: 700px;
         }
 
         .bottom-left {
@@ -183,10 +189,11 @@
 </nav>
 
 <nav th:fragment="update-nav" class="navbar navbar-expand-sm navbar-yellow bg-warning">
-    <th scope="row">업데이트 현재 시간  </th>
+<!--    업데이트 현재 시간-->
+    <th scope="row"> </th>
     &nbsp &nbsp
     <div>
-        <i class="fas fa-sync"></i>
+<!--        <i class="fas fa-sync"></i>-->
     </div>
 </nav>
 

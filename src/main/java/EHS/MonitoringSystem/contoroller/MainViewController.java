@@ -32,7 +32,7 @@ public class MainViewController {
         List<WindInfoVO> windData = new ArrayList<>(); // 풍속 데이터 리스트
 
         try {
-            String[] sensorId = {"id2010", "id2010", "id2010", "id2010"};
+            String[] sensorId = {"id2001", "id2002", "id2003", "id2004"};
 
             Map<String, Object> param = new HashMap<>();
 
