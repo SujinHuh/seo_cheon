@@ -190,7 +190,7 @@
                     var realTimeDiv = $('#realTimeData');
                     realTimeDiv.empty();
                     $.each(data.dataList, function (index, obj) {
-                        var contents = $('<h4></h4>');
+                        var contents = $('<span style="font-size:60px;"></span>');
                         var idValue = 'list-item-' + (index + 1);
                         var value = 'sensorId : ' + obj.sensorId +
                             ",  windDir : " + obj.windDir + ",  windSpeed : " + obj.windSpeed +
