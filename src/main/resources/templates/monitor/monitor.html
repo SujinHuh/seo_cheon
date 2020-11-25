@@ -120,6 +120,7 @@
                 if (typeof data.windInfo !== 'undefined') {
 
                     $.each(data.windInfo, function (index, obj) {
+                        console.log(obj);
                         if (index == 0) {
                             $('#topLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
                         } else if (index == 1) {
