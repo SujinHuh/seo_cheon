@@ -120,15 +120,30 @@
                 if (typeof data.windInfo !== 'undefined') {
 
                     $.each(data.windInfo, function (index, obj) {
-                        if (index == 0) {
-                            $('#topLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
-                        } else if (index == 1) {
-                            $('#topRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
-                        } else if (index == 2) {
-                            $('#downLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
-                        } else if (index == 3) {
-                            $('#downRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
+                        if(obj != null) {
 
+                            if (index == 0) {
+                                $('#topLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
+                            } else if (index == 1) {
+                                $('#topRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
+                            } else if (index == 2) {
+                                $('#downLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
+                            } else if (index == 3) {
+                                $('#downRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
+
+                            }
+                        }else {
+                            //값이 없으면 표시 안하도록 변경
+                            if (index == 0) {
+                                $('#topLeft').html('<h4>' + ' - ' + ", " +  '-' + "</h4>");
+                            } else if (index == 1) {
+                                $('#topRight').html('<h4>' + ' - ' + ", " +  '-' + "</h4>");
+                            } else if (index == 2) {
+                                $('#downLeft').html('<h4>' + ' - ' + ", " +  '-' + "</h4>");
+                            } else if (index == 3) {
+                                $('#downRight').html('<h4>' + ' - ' + ", " +  '-' + "</h4>");
+
+                            }
                         }
                     });
                 }
