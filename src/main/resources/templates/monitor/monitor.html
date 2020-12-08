@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <body class="bg-light">
 <div class="container">
-    <br>
+<!--    <br>-->
     <!-- 실시간 풍향/풍속 ()-->
     <div class="container">
 
@@ -62,13 +62,14 @@
                 </div>
             </div>
         </div>
-        <br> <br>
+        <br>
+<!--        <br>-->
     </div>
 
 
 </div>
 
-<br><br><br><br><br><br>
+<!--<br><br><br><br><br><br>-->
 
 <!-- realTime Data  -->
 <div class="card">
@@ -204,7 +205,7 @@
                     var realTimeDiv = $('#realTimeData');
                     realTimeDiv.empty();
                     $.each(data.dataList, function (index, obj) {
-                        var contents = $('<h4></h4>');
+                        var contents = $('<span style="font-size:37px;"></span>');
                         var idValue = 'list-item-' + (index + 1);
                         var value = 'sensorId : ' + obj.sensorId +
                             ",  windDir : " + obj.windDir + ",  windSpeed : " + obj.windSpeed +
