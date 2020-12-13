@@ -6,8 +6,8 @@
     <div class="container">
 
         <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
+<!--            <div class="col-md-1"></div>-->
+            <div class="col-md-9">
 
                 <!--       table Start        -->
                 <style type="text/css">
@@ -93,6 +93,13 @@
                 </table>
                 <!--table End-->
             </div>
+
+            <div class="col-md-2">
+
+
+
+
+            </div>
         </div>
         <br>
     </div>
@@ -102,29 +109,57 @@
 
 <!-- realTime Data  -->
 <div class="card">
-    <h2 class="card-header">Smart Sensor Data</h2>
+    <h3 class="card-header">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        wind Dir
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        wind Spd
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Temp
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Humidity
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        RCV Time
+    </h3>
     <div class="card-body">
 
         <p class="card-text">
         <div class="row" style="margin:0px;">
             <div class="col-md-10">
                 <div id="realTimeData" data-spy="scroll" data-target="#list-example" data-offset="0"
-                     class="scrollspy-example"
                      style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "
                      onclick="this.select()" onfocus="this.select()">
 
                     <span id="smartSensorData"></span>
                 </div>
             </div>
-            <div class="col-md-2" style="text-align: right">
-                <button type="button" onclick="sensorDataWarningFunction()" class="btn btn-success btn-lg"
-                        style="float: left">Warning
-                </button>
-            </div>
         </div>
         </p>
     </div>
 </div>
+
+
+
+<!--<div class="card">-->
+<!--    <h2 class="card-header">Smart Sensor Data</h2>-->
+<!--    <div class="card-body">-->
+
+<!--        <p class="card-text">-->
+<!--        <div class="row" style="margin:0px;">-->
+<!--            <div class="col-md-10">-->
+<!--                <div id="realTimeData" data-spy="scroll" data-target="#list-example" data-offset="0"-->
+<!--                     class="scrollspy-example"-->
+<!--                     style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "-->
+<!--                     onclick="this.select()" onfocus="this.select()">-->
+
+<!--                    <span id="smartSensorData"></span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        </p>-->
+<!--    </div>-->
+<!--</div>-->
+
 
 </div>
 </div>
