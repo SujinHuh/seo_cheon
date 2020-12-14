@@ -10,31 +10,22 @@
             <div class="col-md-9">
 
                 <!--       table Start        -->
-                <style type="text/css">
-                    .tg  {border-collapse:collapse;border-color:#ccc;border-spacing:0;}
-                    .tg td{background-color:#fff;border-bottom-width:1px;border-color:#ccc;border-style:solid;border-top-width:1px;
-                        border-width:0px;color:#333;font-family:Arial, sans-serif;font-size:14px;overflow:hidden;padding:10px 5px;
-                        word-break:normal;}
-                    .tg th{background-color:#f0f0f0;border-bottom-width:1px;border-color:#ccc;border-style:solid;border-top-width:1px;
-                        border-width:0px;color:#333;font-family:Arial, sans-serif;font-size:14px;font-weight:normal;overflow:hidden;
-                        padding:10px 5px;word-break:normal;}
-                    .tg .tg-9wq8{border-color:inherit;text-align:center;vertical-align:middle}
-                    .tg .tg-nrix{text-align:center;vertical-align:middle}
-                </style>
-                <table class="tg" style="undefined;table-layout: fixed; width: 720px">
+
+                <table class="tg" style="table-layout: fixed; width: 720px">
                     <colgroup>
-                        <col style="width: 103px">
-                        <col style="width: 300px">
                         <col style="width: 200px">
                         <col style="width: 300px">
-                        <col style="width: 200px">
                         <col style="width: 300px">
+                        <col style="width: 300px">
+                        <col style="width: 200px">
+                        <col style="width: 400px">
                     </colgroup>
                     <thead>
                     <tr>
                         <th class="tg-nrix"></th>
-                        <th class="tg-9wq8"><span style="font-weight:400;font-style:normal">wind Dir</span></th>
-                        <th class="tg-9wq8"><span style="font-weight:400;font-style:normal">wind Spd</span></th>
+                        <th class="tg-9wq8"><span style="font-weight:400;font-style:normal">Wind Dir</span></th>
+                        <th class="tg-9wq8"><span style="font-weight:400;font-style:normal">Wind Spd</span></th>
+                        <th class="tg-9wq8"><span style="font-weight:400;font-style:normal">Lux</span></th>
                         <th class="tg-9wq8"><span style="font-weight:400;font-style:normal">Temp</span></th>
                         <th class="tg-9wq8"><span style="font-weight:400;font-style:normal">Humidity</span></th>
                         <th class="tg-9wq8"><span style="font-weight:400;font-style:normal">RCV Time</span></th>
@@ -42,12 +33,28 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td class="tg-9wq8"></td>
-                        <td class="tg-9wq8"></td>
-                        <td class="tg-9wq8"></td>
-                        <td class="tg-9wq8"></td>
-                        <td class="tg-9wq8"></td>
-                        <td class="tg-9wq8"></td>
+                        <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">
+                            <button type="button" onclick="realTimeGraphpopup('id2001')" class="btn btn-link btn-lg" style="width: 127px; height: 54px" >
+                            ID 2001</button>
+                        </span>
+                        </td>
+                        <td class="tg-9wq8">
+                             <span id="id2001_windDir">
+<!--                                    <h1 class="text-light">id2001</h1>-->
+                                </span>
+                        </td>
+                        <td class="tg-9wq8">
+                            <span id="#id2001_windSpeed"></span>
+                        </td>
+                        <td class="tg-9wq8">
+                            <span id="#id2001_lux"></span></td>
+                        <td class="tg-9wq8">
+                            <span id="#id2001_rhumidity"></span>
+                        </td>
+                        <td class="tg-9wq8">
+                            <span id="#id2001_nowTime"></span>
+                        </td>
+
                     </tr>
                     <tr>
                         <td class="tg-9wq8"></td>
@@ -108,35 +115,36 @@
 <!--<br><br><br><br><br><br>-->
 
 <!-- realTime Data  -->
-<div class="card">
-    <h3 class="card-header">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        wind Dir
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        wind Spd
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        Temp
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        Humidity
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        RCV Time
-    </h3>
-    <div class="card-body">
+<!--<div class="card">-->
+<!--    <h3 class="card-header">-->
+<!--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--        wind Dir-->
+<!--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--        wind Spd-->
+<!--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--        Temp-->
+<!--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--        Humidity-->
+<!--        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+<!--        RCV Time-->
+<!--    </h3>-->
+<!--    <div class="card-body">-->
 
-        <p class="card-text">
-        <div class="row" style="margin:0px;">
-            <div class="col-md-10">
-                <div id="realTimeData" data-spy="scroll" data-target="#list-example" data-offset="0"
-                     style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "
-                     onclick="this.select()" onfocus="this.select()">
+<!--        <p class="card-text">-->
+<!--        <div class="row" style="margin:0px;">-->
+<!--            <div class="col-md-10">-->
+<!--                <div id ="realTimeData" style="height: 153px; overflow: auto;">-->
+<!--&lt;!&ndash;                <div id="realTimeData" data-spy="scroll" data-target="#list-example" data-offset="0"&ndash;&gt;-->
+<!--&lt;!&ndash;                     style=" height: 153px; overflow: auto; overflow: auto; border: 1.5px solid black; "&ndash;&gt;-->
+<!--&lt;!&ndash;                     onclick="this.select()" onfocus="this.select()">&ndash;&gt;-->
 
-                    <span id="smartSensorData"></span>
-                </div>
-            </div>
-        </div>
-        </p>
-    </div>
-</div>
+<!--                    <span id="smartSensorData"></span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        </p>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 
@@ -185,7 +193,11 @@
                         if (obj != null) {
 
                             if (index == 0) {
-                                $('#topLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
+                                $('#id2001_windDir').html('<h4>' + obj.windDir + "</h4>");
+                                $('#id2001_windSpeed').html('<h4>' + obj.windSpeed +"</h4>");
+                                $('#id2001_lux').html('<h4>'+ obj.lux +"</h4>");
+                                $('#id2001_rhumidity').html('<h4>'+ obj.rhumidity +"</h4>");
+                                $('#id2001_nowTime').html('<h4>'+ obj.nowTime +"</h4>");
                             } else if (index == 1) {
                                 $('#topRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
                             } else if (index == 2) {
@@ -254,7 +266,6 @@
             }
             return result;
         }
-
         $.ajax({
             url: '/main/data/realTimeData',
             type: 'post',
@@ -268,9 +279,9 @@
                     $.each(data.dataList, function (index, obj) {
                         var contents = $('<span style="font-size:37px;"></span>');
                         var idValue = 'list-item-' + (index + 1);
-                        var value = 'sensorId : ' + obj.sensorId +
-                            ",  windDir : " + obj.windDir + ",  windSpeed : " + obj.windSpeed +
-                            ",  lux : " + obj.lux + ",  rHumidity : " + obj.rhumidity + ",  date : " + obj.nowTime; //rhumidity --카멜식 오류 수정
+                        var value =  obj.sensorId +
+                            + obj.windDir + "  " + obj.windSpeed +
+                            "      " + obj.lux + "           " + obj.rhumidity + "          " + obj.nowTime; //rhumidity --카멜식 오류 수정
 
                         contents.attr('id', idValue);
                         contents.text(value);
@@ -284,6 +295,35 @@
                 console.log(error);
             }
         });
+        // $.ajax({
+        //     url: '/main/data/realTimeData',
+        //     type: 'post',
+        //     dataType: 'json',
+        //     data: param(),
+        //     success: function (data) {
+        //         console.log('set realTime');
+        //         if (typeof data.dataList !== 'undefined') {
+        //             var realTimeDiv = $('#realTimeData');
+        //             realTimeDiv.empty();
+        //             $.each(data.dataList, function (index, obj) {
+        //                 var contents = $('<span style="font-size:37px;"></span>');
+        //                 var idValue = 'list-item-' + (index + 1);
+        //                 var value = 'sensorId : ' + obj.sensorId +
+        //                     ",  windDir : " + obj.windDir + ",  windSpeed : " + obj.windSpeed +
+        //                     ",  lux : " + obj.lux + ",  rHumidity : " + obj.rhumidity + ",  date : " + obj.nowTime; //rhumidity --카멜식 오류 수정
+        //
+        //                 contents.attr('id', idValue);
+        //                 contents.text(value);
+        //                 realTimeDiv.append(contents);
+        //
+        //
+        //             });
+        //         }
+        //     },
+        //     error: function (request, status, error) {
+        //         console.log(error);
+        //     }
+        // });
     }
 
 
