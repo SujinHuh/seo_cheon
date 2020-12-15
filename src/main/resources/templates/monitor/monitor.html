@@ -41,12 +41,12 @@
                         </td>
 
                         <td class="tg-9wq8">
-                             <span id="id2001_winddir">
+                             <span id="id2001_windDir">
                                 </span>
                         </td>
 
                         <td class="tg-9wq8">
-                            <span id="id2001_windspeed">
+                            <span id="id2001_windSpeed">
                             </span>
                         </td>
 
@@ -59,12 +59,15 @@
                             <span id="id2001_temp">
                             </span>
                         </td>
+
                         <td class="tg-9wq8">
                             <span id="id2001_rhumidity">
                             </span>
                         </td>
+
                         <td class="tg-9wq8">
-                            <span id="id2001_nowTime"></span>
+                            <span id="id2001_nowTime">
+                            </span>
                         </td>
 
                     </tr>
@@ -205,8 +208,8 @@
                         if (obj != null) {
                             console.log(obj);
                             if (index == 0) {
-                                $('#id2001_winddir').append('<h4>' + obj.winddir + "</h4>");
-                                $('#id2001_windspeed').append('<h4>' + obj.windspeed +"</h4>");
+                                $('#id2001_windDir').append('<h4>' + obj.windDir + "</h4>");
+                                $('#id2001_windSpeed').append('<h4>' + obj.windSpeed +"</h4>");
                                 $('#id2001_lux').append('<h4>'+ obj.lux +"</h4>");
                                 $('#id2001_temp').append('<h4>'+ obj.Temp +"</h4>");
                                 $('#id2001_rhumidity').append('<h4>'+ obj.rhumidity +"</h4>");
@@ -221,7 +224,12 @@
                         } else {
                             //값이 없으면 표시 안하도록 변경
                             if (index == 0) {
-                                $('#topLeft').html('<h4>' + ' - ' + ", " + '-' + "</h4>");
+                                    $('#id2001_windDir').append('<h4>' + ' - ' + "</h4>");
+                                    $('#id2001_windSpeed').append('<h4>' + ' - ' + "</h4>");
+                                    $('#id2001_lux').append('<h4>' + ' - ' + "</h4>");
+                                    $('#id2001_temp').append('<h4>' + ' - ' + "</h4>");
+                                    $('#id2001_rhumidity').append('<h4>' + ' - ' + "</h4>");
+                                    $('#id2001_nowTime').append('<h4>' + ' - ' + "</h4>");
                             } else if (index == 1) {
                                 $('#topRight').html('<h4>' + ' - ' + ", " + '-' + "</h4>");
                             } else if (index == 2) {

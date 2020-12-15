@@ -6,11 +6,12 @@ import lombok.Data;
 @Data
 public class WindInfoVO {
 
-    private String sensorid;
-    private String winddir;
-    private String windspeed;
+    private String sensorId;
+    private String windDir;
+    private String windSpeed;
+    private String temp;
     private String lux;
-    private String rhumidity;
+    private String rHumidity;
     private String nowTime;
 
 }
