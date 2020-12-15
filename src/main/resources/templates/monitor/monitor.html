@@ -14,17 +14,18 @@
                 <table class="tg" style="table-layout: fixed; width: 720px">
                     <colgroup>
                         <col style="width: 200px">
+                        <col style="width: 150px">
+                        <col style="width: 150px">
                         <col style="width: 300px">
-                        <col style="width: 300px">
-                        <col style="width: 300px">
-                        <col style="width: 200px">
+                        <col style="width: 150px">
+                        <col style="width: 150px">
                         <col style="width: 400px">
                     </colgroup>
                     <thead>
                     <tr>
                         <th class="tg-nrix"></th>
                         <th class="tg-9wq8"><span style="font-weight:400;font-style:normal">Wind Dir</span></th>
-                        <th class="tg-9wq8"><span style="font-weight:400;font-style:normal">Wind Spd</span></th>
+                        <th class="tg-9wq8"><span style="font-weight:200;font-style:normal">Wind Spd</span></th>
                         <th class="tg-9wq8"><span style="font-weight:400;font-style:normal">Lux</span></th>
                         <th class="tg-9wq8"><span style="font-weight:400;font-style:normal">Temp</span></th>
                         <th class="tg-9wq8"><span style="font-weight:400;font-style:normal">Humidity</span></th>
@@ -38,21 +39,32 @@
                             ID 2001</button>
                         </span>
                         </td>
+
                         <td class="tg-9wq8">
-                             <span id="id2001_windDir">
-<!--                                    <h1 class="text-light">id2001</h1>-->
+                             <span id="id2001_winddir">
                                 </span>
                         </td>
+
                         <td class="tg-9wq8">
-                            <span id="#id2001_windSpeed"></span>
+                            <span id="id2001_windspeed">
+                            </span>
+                        </td>
+
+                        <td class="tg-9wq8">
+                            <span id="id2001_lux">
+                            </span>
+                        </td>
+
+                        <td class="tg-9wq8">
+                            <span id="id2001_temp">
+                            </span>
                         </td>
                         <td class="tg-9wq8">
-                            <span id="#id2001_lux"></span></td>
-                        <td class="tg-9wq8">
-                            <span id="#id2001_rhumidity"></span>
+                            <span id="id2001_rhumidity">
+                            </span>
                         </td>
                         <td class="tg-9wq8">
-                            <span id="#id2001_nowTime"></span>
+                            <span id="id2001_nowTime"></span>
                         </td>
 
                     </tr>
@@ -191,19 +203,20 @@
 
                     $.each(data.windInfo, function (index, obj) {
                         if (obj != null) {
-
+                            console.log(obj);
                             if (index == 0) {
-                                $('#id2001_windDir').html('<h4>' + obj.windDir + "</h4>");
-                                $('#id2001_windSpeed').html('<h4>' + obj.windSpeed +"</h4>");
-                                $('#id2001_lux').html('<h4>'+ obj.lux +"</h4>");
-                                $('#id2001_rhumidity').html('<h4>'+ obj.rhumidity +"</h4>");
-                                $('#id2001_nowTime').html('<h4>'+ obj.nowTime +"</h4>");
+                                $('#id2001_winddir').append('<h4>' + obj.winddir + "</h4>");
+                                $('#id2001_windspeed').append('<h4>' + obj.windspeed +"</h4>");
+                                $('#id2001_lux').append('<h4>'+ obj.lux +"</h4>");
+                                $('#id2001_temp').append('<h4>'+ obj.Temp +"</h4>");
+                                $('#id2001_rhumidity').append('<h4>'+ obj.rhumidity +"</h4>");
+                                $('#id2001_nowTime').append('<h4>'+ obj.nowTime +"</h4>");
                             } else if (index == 1) {
-                                $('#topRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
+                                $('#topRight').append('<h4>' + obj.winddir + ", " + obj.windspeed + "</h4>");
                             } else if (index == 2) {
-                                $('#downLeft').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
+                                $('#downLeft').append('<h4>' + obj.winddir + ", " + obj.windspeed + "</h4>");
                             } else if (index == 3) {
-                                $('#downRight').html('<h4>' + obj.windDir + ", " + obj.windSpeed + "</h4>");
+                                $('#downRight').append('<h4>' + obj.winddir + ", " + obj.windspeed + "</h4>");
                             }
                         } else {
                             //값이 없으면 표시 안하도록 변경

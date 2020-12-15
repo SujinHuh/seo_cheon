@@ -5,16 +5,46 @@
 
 
     <select id="getMainSensorInfo" parameterType="java.util.Map" resultType="EHS.MonitoringSystem.vo.WindInfoVO">
+
+        <![CDATA[
+                    SELECT  SensorID as sensorId,
+                            case when(windDir >=336.5 and windDir <359) or (windDir >=0 and windDir <=22.5) then 'N'
+                                 when windDir > 22.5 and windDir <= 67.5 then 'NE'
+                                 when windDir > 67.5 and windDir <= 112.5 then 'E'
+                                 when windDir > 112.5 and windDir <= 157.5 then 'SE'
+                                 when windDir > 157.5 and windDir <= 202.5 then 'S'
+                                 when windDir > 202.5 and windDir <= 247.5 then 'SW'
+                                 when windDir > 247.5 and windDir <= 292.5 then 'W'
+                                 when windDir > 292.5 and windDir < 336.5 then 'NW' end as windDir,
+                            WindSpeed as windSpeed,
+                            lux as lux,
+                            rHumidity as rHumidity,
+                            nowTime
+                            from (
+                            SELECT SensorID,
+                            concat(ROUND(WindSpeed / 100, 0), ' m/s') AS WindSpeed,
+                            WindDirection  as windDir,
+                            lux,
+                            concat(RHumidity, ' %') as rHumidity,
+                            DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), '+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') as nowTime,
+                            RCVTime
+                            FROM pier_env
+                            WHERE SensorID = #{sensorId}
+                            )a
+                    ORDER BY  RCVTime DESC
+                    LIMIT 1
+         ]]>
+<!--202012 update-->
 <!--        <![CDATA[-->
 <!--                    SELECT  SensorID as sensorId,-->
-<!--                            case when windDir  = 0  then 'N'-->
-<!--                                 when windDir > 0 and windDir < 90 then 'NE'-->
-<!--                                 when windDir = 90 then 'E'-->
-<!--                                 when windDir > 90 and windDir < 180 then 'SE'-->
-<!--                                 when windDir  = 180 then 'N'-->
-<!--                                 when windDir > 180 and windDir < 270 then 'NW'-->
-<!--                                 when windDir  = 270 then 'W'-->
-<!--                                 when windDir > 270 and windDir < 360 then 'NW' end as windDir,-->
+<!--                            case when(windDir >=336.5 and windDir <359) or (windDir >=0 and windDir <=22.5) then 'N'-->
+<!--                                 when windDir > 22.5 and windDir <= 67.5 then 'NE'-->
+<!--                                 when windDir > 67.5 and windDir <= 112.5 then 'E'-->
+<!--                                 when windDir > 112.5 and windDir <= 157.5 then 'SE'-->
+<!--                                 when windDir > 157.5 and windDir <= 202.5 then 'S'-->
+<!--                                 when windDir > 202.5 and windDir <= 247.5 then 'SW'-->
+<!--                                 when windDir > 247.5 and windDir <= 292.5 then 'W'-->
+<!--                                 when windDir > 292.5 and windDir < 336.5 then 'NW' end as windDir,-->
 <!--                            WindSpeed as windSpeed-->
 <!--                            from (-->
 <!--                            SELECT SensorID,-->
@@ -28,31 +58,29 @@
 <!--                    ORDER BY  RCVTime DESC-->
 <!--                    LIMIT 1-->
 <!--         ]]>-->
+        <!--        <![CDATA[-->
+        <!--                    SELECT  SensorID as sensorId,-->
+        <!--                            case when windDir  = 0  then 'N'-->
+        <!--                                 when windDir > 0 and windDir < 90 then 'NE'-->
+        <!--                                 when windDir = 90 then 'E'-->
+        <!--                                 when windDir > 90 and windDir < 180 then 'SE'-->
+        <!--                                 when windDir  = 180 then 'N'-->
+        <!--                                 when windDir > 180 and windDir < 270 then 'NW'-->
+        <!--                                 when windDir  = 270 then 'W'-->
+        <!--                                 when windDir > 270 and windDir < 360 then 'NW' end as windDir,-->
+        <!--                            WindSpeed as windSpeed-->
+        <!--                            from (-->
+        <!--                            SELECT SensorID,-->
+        <!--                            concat(ROUND(WindSpeed / 100, 0), ' m/s') AS WindSpeed,-->
+        <!--                            WindDirection  as windDir,-->
+        <!--                            RCVTime-->
+        <!--                            FROM pier_env-->
+        <!--                            WHERE SensorID = #{sensorId}-->
 
-        <![CDATA[
-                    SELECT  SensorID as sensorId,
-                            case when(windDir >=336.5 and windDir <359) or (windDir >=0 and windDir <=22.5) then 'N'
-                                 when windDir > 22.5 and windDir <= 67.5 then 'NE'
-                                 when windDir > 67.5 and windDir <= 112.5 then 'E'
-                                 when windDir > 112.5 and windDir <= 157.5 then 'SE'
-                                 when windDir > 157.5 and windDir <= 202.5 then 'S'
-                                 when windDir > 202.5 and windDir <= 247.5 then 'SW'
-                                 when windDir > 247.5 and windDir <= 292.5 then 'W'
-                                 when windDir > 292.5 and windDir < 336.5 then 'NW' end as windDir,
-                            WindSpeed as windSpeed
-                            from (
-                            SELECT SensorID,
-                            concat(ROUND(WindSpeed / 100, 0), ' m/s') AS WindSpeed,
-                            WindDirection  as windDir,
-                            RCVTime
-                            FROM pier_env
-                            WHERE SensorID = #{sensorId}
-
-                            )a
-                    ORDER BY  RCVTime DESC
-                    LIMIT 1
-         ]]>
-
+        <!--                            )a-->
+        <!--                    ORDER BY  RCVTime DESC-->
+        <!--                    LIMIT 1-->
+        <!--         ]]>-->
 
     </select>
 
