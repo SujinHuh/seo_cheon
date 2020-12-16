@@ -110,6 +110,7 @@
     var realTimeInterVal = null;
 
     function drawWind() {
+
         console.log('set wind');
         $.ajax({
             url: '/main/data/getWindInfo',
@@ -156,6 +157,7 @@
 
 
     function setIntervalEVent() {
+        drawWind.clear();
         windIntervval = setInterval(drawWind, 300000);
         realTimeInterVal = setInterval(getRealTimedata, 300000);
     }

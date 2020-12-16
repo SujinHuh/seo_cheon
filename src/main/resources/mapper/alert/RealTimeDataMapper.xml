@@ -18,6 +18,7 @@
                                  when windDir > 292.5 and windDir < 336.5 then 'NW' end as windDir,
                             WindSpeed as windSpeed,
                             lux as lux,
+                            AirTemperature as AirTemperature,
                             rHumidity as rHumidity,
                             nowTime
                             from (
@@ -25,6 +26,7 @@
                             concat(ROUND(WindSpeed / 100, 0), ' m/s') AS WindSpeed,
                             WindDirection  as windDir,
                             lux,
+                            concat(AirTemperature, ' ℃')as AirTemperature,
                             concat(RHumidity, ' %') as rHumidity,
                             DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), '+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') as nowTime,
                             RCVTime
