@@ -14,12 +14,12 @@
                 <table class="tg" style="table-layout: fixed; width: 720px">
                     <colgroup>
                         <col style="width: 200px">
-                        <col style="width: 150px">
-                        <col style="width: 150px">
+                        <col style="width: 180px">
+                        <col style="width: 180px">
                         <col style="width: 300px">
-                        <col style="width: 150px">
-                        <col style="width: 150px">
-                        <col style="width: 400px">
+                        <col style="width: 200px">
+                        <col style="width: 200px">
+                        <col style="width: 450px">
                     </colgroup>
                     <thead>
                     <tr>
@@ -359,165 +359,96 @@
                         if (obj != null) {
                             console.log(obj);
                             if (index == 0) {
-                                $('#id2001_windDir').append('<h4>' + obj.windDir + "</h4>");
-                                $('#id2001_windSpeed').remove().append('<h4>' + obj.windSpeed + "</h4>");
-                                $('#id2001_lux').remove().append('<h4>' + obj.lux + "</h4>");
-                                $('#id2001_temp').remove().append('<h4>' + obj.airTemperature + "</h4>");
-                                $('#id2001_rhumidity').remove().append('<h4>' + obj.rhumidity + "</h4>");
-                                $('#id2001_nowTime').remove().append('<h4>' + obj.nowTime + "</h4>");
+
+                                $('#id2001_windDir').empty().append('<h4>' + obj.windDir + "</h4>");
+                                $('#id2001_windSpeed').empty().append('<h4>' + obj.windSpeed + "</h4>");
+                                $('#id2001_lux').empty().append('<h4>' + obj.lux + "</h4>");
+                                $('#id2001_temp').empty().append('<h4>' + obj.airTemperature + "</h4>");
+                                $('#id2001_rhumidity').empty().append('<h4>' + obj.rhumidity + "</h4>");
+                                $('#id2001_nowTime').empty().append('<h4>' + obj.nowTime + "</h4>");
                             } else if (index == 1) {
-                                $('#id2002_windDir').remove();
-                                $('#id2002_windDir').append('<h4>' + obj.windDir + "</h4>");
-                                $('#id2002_windSpeed').append('<h4>' + obj.windSpeed + "</h4>");
-                                $('#id2002_lux').append('<h4>' + obj.lux + "</h4>");
-                                $('#id2002_temp').append('<h4>' + obj.airTemperature + "</h4>");
-                                $('#id2002_rhumidity').append('<h4>' + obj.rhumidity + "</h4>");
-                                $('#id2002_nowTime').append('<h4>' + obj.nowTime + "</h4>");
+                                $('#id2002_windDir').empty().append('<h4>' + obj.windDir + "</h4>");
+                                $('#id2002_windSpeed').empty().append('<h4>' + obj.windSpeed + "</h4>");
+                                $('#id2002_lux').empty().append('<h4>' + obj.lux + "</h4>");
+                                $('#id2002_temp').empty().append('<h4>' + obj.airTemperature + "</h4>");
+                                $('#id2002_rhumidity').empty().append('<h4>' + obj.rhumidity + "</h4>");
+                                $('#id2002_nowTime').empty().append('<h4>' + obj.nowTime + "</h4>");
                             } else if (index == 2) {
-                                $('#id2003_windDir').append('<h4>' + obj.windDir + "</h4>");
-                                $('#id2003_windSpeed').append('<h4>' + obj.windSpeed + "</h4>");
-                                $('#id2003_lux').append('<h4>' + obj.lux + "</h4>");
-                                $('#id2003_temp').append('<h4>' + obj.airTemperature + "</h4>");
-                                $('#id2003_rhumidity').append('<h4>' + obj.rhumidity + "</h4>");
-                                $('#id2003_nowTime').append('<h4>' + obj.nowTime + "</h4>");
+                                $('#id2003_windDir').empty().append('<h4>' + obj.windDir + "</h4>");
+                                $('#id2003_windSpeed').empty().append('<h4>' + obj.windSpeed + "</h4>");
+                                $('#id2003_lux').empty().append('<h4>' + obj.lux + "</h4>");
+                                $('#id2003_temp').empty().append('<h4>' + obj.airTemperature + "</h4>");
+                                $('#id2003_rhumidity').empty().append('<h4>' + obj.rhumidity + "</h4>");
+                                $('#id2003_nowTime').empty().append('<h4>' + obj.nowTime + "</h4>");
                             } else if (index == 3) {
-                                $('#id2004_windDir').append('<h4>' + obj.windDir + "</h4>");
-                                $('#id2004_windSpeed').append('<h4>' + obj.windSpeed + "</h4>");
-                                $('#id2004_lux').append('<h4>' + obj.lux + "</h4>");
-                                $('#id2004_temp').append('<h4>' + obj.airTemperature + "</h4>");
-                                $('#id2004_rhumidity').append('<h4>' + obj.rhumidity + "</h4>");
-                                $('#id2004_nowTime').append('<h4>' + obj.nowTime + "</h4>");
+                                $('#id2004_windDir').empty().append('<h4>' + obj.windDir + "</h4>");
+                                $('#id2004_windSpeed').empty().append('<h4>' + obj.windSpeed + "</h4>");
+                                $('#id2004_lux').empty().append('<h4>' + obj.lux + "</h4>");
+                                $('#id2004_temp').empty().append('<h4>' + obj.airTemperature + "</h4>");
+                                $('#id2004_rhumidity').empty().append('<h4>' + obj.rhumidity + "</h4>");
+                                $('#id2004_nowTime').empty().append('<h4>' + obj.nowTime + "</h4>");
                             } else if (index == 4) {
-                                $('#id2005_windDir').append('<h4>' + obj.windDir + "</h4>");
-                                $('#id2005_windSpeed').append('<h4>' + obj.windSpeed + "</h4>");
-                                $('#id2005_lux').append('<h4>' + obj.lux + "</h4>");
-                                $('#id2005_temp').append('<h4>' + obj.airTemperature + "</h4>");
-                                $('#id2005_rhumidity').append('<h4>' + obj.rhumidity + "</h4>");
-                                $('#id2005_nowTime').append('<h4>' + obj.nowTime + "</h4>");
+                                $('#id2005_windDir').empty().append('<h4>' + obj.windDir + "</h4>");
+                                $('#id2005_windSpeed').empty().append('<h4>' + obj.windSpeed + "</h4>");
+                                $('#id2005_lux').empty().append('<h4>' + obj.lux + "</h4>");
+                                $('#id2005_temp').empty().append('<h4>' + obj.airTemperature + "</h4>");
+                                $('#id2005_rhumidity').empty().append('<h4>' + obj.rhumidity + "</h4>");
+                                $('#id2005_nowTime').empty().append('<h4>' + obj.nowTime + "</h4>");
                             } else if (index == 5) {
-                                $('#id2006_windDir').append('<h4>' + obj.windDir + "</h4>");
-                                $('#id2006_windSpeed').append('<h4>' + obj.windSpeed + "</h4>");
-                                $('#id2006_lux').append('<h4>' + obj.lux + "</h4>");
-                                $('#id2006_temp').append('<h4>' + obj.airTemperature + "</h4>");
-                                $('#id2006_rhumidity').append('<h4>' + obj.rhumidity + "</h4>");
-                                $('#id2006_nowTime').append('<h4>' + obj.nowTime + "</h4>");
+                                $('#id2006_windDir').empty().append('<h4>' + obj.windDir + "</h4>");
+                                $('#id2006_windSpeed').empty().append('<h4>' + obj.windSpeed + "</h4>");
+                                $('#id2006_lux').empty().append('<h4>' + obj.lux + "</h4>");
+                                $('#id2006_temp').empty().append('<h4>' + obj.airTemperature + "</h4>");
+                                $('#id2006_rhumidity').empty().append('<h4>' + obj.rhumidity + "</h4>");
+                                $('#id2006_nowTime').empty().append('<h4>' + obj.nowTime + "</h4>");
                             }
                         } else {
                             //값이 없으면 표시 안하도록 변경
                             if (index == 0) {
-                                $('#id2001_windDir').empty();
-                                $('#id2001_windDir').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2001_windSpeed').empty();
-                                $('#id2001_windSpeed').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2001_lux').empty();
-                                $('#id2001_lux').html('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2001_temp').empty();
-                                $('#id2001_temp').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2001_rhumidity').empty();
-                                $('#id2001_rhumidity').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2001_nowTime').empty();
+                                $('#id2001_windDir').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2001_windSpeed').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2001_lux').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2001_temp').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2001_rhumidity').empty().append('<h4>' + ' - ' + "</h4>");
                                 $('#id2001_nowTime').append('<h4>' + ' - ' + "</h4>");
 
                             } else if (index == 1) {
-                                $('#id2002_windDir').empty();
-                                $('#id2002_windDir').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2002_windSpeed').empty();
-                                $('#id2002_windSpeed').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2002_lux').empty();
-                                $('#id2002_lux').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2002_temp').empty();
-                                $('#id2002_temp').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2002_rhumidity').empty();
-                                $('#id2002_rhumidity').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2002_nowTime').empty();
-                                $('#id2002_nowTime').append('<h4>' + ' - ' + "</h4>");
+                                $('#id2002_windDir').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2002_windSpeed').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2002_lux').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2002_temp').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2002_rhumidity').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2002_nowTime').empty().append('<h4>' + ' - ' + "</h4>");
 
                             } else if (index == 2) {
-                                $('#id2003_windDir').empty();
-                                $('#id2003_windDir').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2003_windSpeed').empty();
-                                $('#id2003_windSpeed').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2003_lux').empty();
-                                $('#id2003_lux').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2003_temp').empty();
-                                $('#id2003_temp').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2003_rhumidity').empty();
-                                $('#id2003_rhumidity').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2003_nowTime').empty();
-                                $('#id2003_nowTime').append('<h4>' + ' - ' + "</h4>");
-
+                                $('#id2003_windDir').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2003_windSpeed').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2003_lux').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2003_temp').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2003_rhumidity').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2003_nowTime').empty().append('<h4>' + ' - ' + "</h4>");
                             } else if (index == 3) {
-
-                                $('#id2004_windDir').empty();
-                                $('#id2004_windDir').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2004_windSpeed').empty();
-                                $('#id2004_windSpeed').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2004_lux').empty();
-                                $('#id2004_lux').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2004_temp').empty();
-                                $('#id2004_temp').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2004_rhumidity').empty();
-                                $('#id2004_rhumidity').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2004_nowTime').empty();
-                                $('#id2004_nowTime').append('<h4>' + ' - ' + "</h4>");
+                                $('#id2004_windDir').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2004_windSpeed').empty().append('<h4>' + ' - ' + "</h4>");;
+                                $('#id2004_lux').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2004_temp').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2004_rhumidity').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2004_nowTime').empty().append('<h4>' + ' - ' + "</h4>");
                             } else if (index == 4) {
-
-                                $('#id2005_windDir').empty();
-                                $('#id2005_windDir').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2005_windSpeed').empty();
-                                $('#id2005_windSpeed').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2005_lux').empty();
-                                $('#id2005_lux').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2005_temp').empty();
-                                $('#id2005_temp').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2005_rhumidity').empty();
-                                $('#id2005_rhumidity').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2005_nowTime').empty();
-                                $('#id2005_nowTime').append('<h4>' + ' - ' + "</h4>");
+                                $('#id2005_windDir').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2005_windSpeed').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2005_lux').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2005_temp').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2005_rhumidity').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2005_nowTime').empty().append('<h4>' + ' - ' + "</h4>");
 
                             } else if (index == 5) {
-                                $('#id2006_windDir').empty();
-                                $('#id2006_windDir').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2006_windSpeed').empty();
-                                $('#id2006_windSpeed').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2006_lux').empty();
-                                $('#id2006_lux').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2006_temp').empty();
-                                $('#id2006_temp').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2006_rhumidity').empty();
-                                $('#id2006_rhumidity').append('<h4>' + ' - ' + "</h4>");
-
-                                $('#id2006_nowTime').empty();
-                                $('#id2006_nowTime').append('<h4>' + ' - ' + "</h4>");
+                                $('#id2006_windDir').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2006_windSpeed').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2006_lux').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2006_temp').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2006_rhumidity').empty().append('<h4>' + ' - ' + "</h4>");
+                                $('#id2006_nowTime').empty().append('<h4>' + ' - ' + "</h4>");
                             }
                         }
                     });
