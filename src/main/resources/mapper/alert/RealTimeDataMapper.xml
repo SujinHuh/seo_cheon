@@ -25,7 +25,7 @@
                             SELECT SensorID,
                             concat(ROUND(WindSpeed / 100, 0), ' m/s') AS WindSpeed,
                             WindDirection  as windDir,
-                            lux,
+                            concat(lux, ' lux')as lux,
                             concat(AirTemperature, ' ℃')as AirTemperature,
                             concat(RHumidity, ' %') as rHumidity,
                             DATE_FORMAT(CONVERT_TZ( DATE_FORMAT(RCVTime, '%Y-%m-%d %H:%i:00'), '+0:00', '+09:00')  ,'%Y-%m-%d %H:%i:00') as nowTime,
