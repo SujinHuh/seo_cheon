@@ -17,7 +17,6 @@
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
                             AND SensorID =  #{sensorId}
                      )a
-                where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
         )TEMP
         GROUP BY x
         order by x asc
@@ -39,7 +38,6 @@
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
                             AND SensorID =  #{sensorId}
                      )a
-                where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
           )TEMP
        GROUP BY x
        order by x asc
@@ -61,7 +59,6 @@
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
                             AND SensorID =  #{sensorId}
                      )a
-                where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
           )TEMP
        GROUP BY x
        order by x asc
@@ -83,7 +80,6 @@
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
                             AND SensorID =  #{sensorId}
                      )a
-                where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
           )TEMP
        GROUP BY x
        order by x asc
@@ -105,7 +101,6 @@
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
                             AND SensorID =  #{sensorId}
                      )a
-                where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
           )TEMP
        GROUP BY x
        order by x asc
@@ -126,7 +121,6 @@
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
                             AND SensorID =  #{sensorId}
                      )a
-                where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
           )TEMP
        GROUP BY x
        order by x asc
@@ -147,7 +141,6 @@
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
                             AND SensorID =  #{sensorId}
                      )a
-                where mod(substr(date_format(RCVTime, '%Y%m%d%H%i%S'), 11, 2), 5) = 0
           )TEMP
        GROUP BY x
        order by x asc
