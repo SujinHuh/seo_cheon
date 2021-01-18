@@ -13,13 +13,20 @@
 
                 <table class="tg" style="table-layout: fixed; width: 720px">
                     <colgroup>
+                        <col style="width: 180px">
+                        <col style="width: 150px">
+                        <col style="width: 150px">
                         <col style="width: 200px">
-                        <col style="width: 180px">
-                        <col style="width: 180px">
+                        <col style="width: 150px">
+                        <col style="width: 150px">
                         <col style="width: 300px">
-                        <col style="width: 200px">
-                        <col style="width: 200px">
-                        <col style="width: 450px">
+                        <!--                        <col style="width: 200px">-->
+                        <!--                        <col style="width: 180px">-->
+                        <!--                        <col style="width: 180px">-->
+                        <!--                        <col style="width: 300px">-->
+                        <!--                        <col style="width: 200px">-->
+                        <!--                        <col style="width: 200px">-->
+                        <!--                        <col style="width: 450px">-->
                     </colgroup>
                     <thead>
                     <tr>
@@ -36,7 +43,7 @@
                     <tr>
                         <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">
                             <button type="button" onclick="realTimeGraphpopup('id2001')" class="btn btn-link btn-lg"
-                                    style="width: 127px; height: 54px">
+                                    style = "font-weight: bolder; font-size: x-large" >
                             ID 2001</button>
                         </span>
                         </td>
@@ -64,7 +71,7 @@
                     <tr>
                         <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">
                             <button type="button" onclick="realTimeGraphpopup('id2002')" class="btn btn-link btn-lg"
-                                    style="width: 127px; height: 54px">
+                                    style = "font-weight: bolder; font-size: larger">
                             ID 2002</button>
                         </span>
                         </td>
@@ -114,84 +121,6 @@
                             <span id="id2003_nowTime"></span>
                         </td>
                     </tr>
-                    <tr>
-                        <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">
-                            <button type="button" onclick="realTimeGraphpopup('id2004')" class="btn btn-link btn-lg"
-                                    style="width: 127px; height: 54px">
-                            ID 2004</button>
-                        </span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2004_windDir"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2004_windSpeed"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2004_lux"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2004_temp"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2004_rhumidity"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2004_nowTime"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">
-                            <button type="button" onclick="realTimeGraphpopup('id2005')" class="btn btn-link btn-lg"
-                                    style="width: 127px; height: 54px">
-                            ID 2005</button>
-                        </span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2005_windDir"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2005_windSpeed"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2005_lux"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2005_temp"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2005_rhumidity"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2005_nowTime"></span>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="tg-9wq8"><span style="font-weight:400;font-style:normal">
-                            <button type="button" onclick="realTimeGraphpopup('id2006')" class="btn btn-link btn-lg"
-                                    style="width: 127px; height: 54px">
-                            ID 2006</button>
-                        </span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2006_windDir"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2006_windSpeed"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2006_lux"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2006_temp"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2006_rhumidity"></span>
-                        </td>
-                        <td class="tg-9wq8">
-                            <span id="id2006_nowTime"></span>
-                        </td>
-                    </tr>
                     </tbody>
                 </table>
                 <!--table End-->
@@ -231,49 +160,29 @@
                             console.log(obj);
                             if (index == 0) {
 
-                                $('#id2001_windDir').empty().append('<h4>' + obj.windDir + "</h4>");
-                                $('#id2001_windSpeed').empty().append('<h4>' + obj.windSpeed + "</h4>");
-                                $('#id2001_lux').empty().append('<h4>' + obj.lux + "</h4>");
-                                $('#id2001_temp').empty().append('<h4>' + obj.airTemperature + "</h4>");
-                                $('#id2001_rhumidity').empty().append('<h4>' + obj.rhumidity + "</h4>");
-                                $('#id2001_nowTime').empty().append('<h4>' + obj.nowTime + "</h4>");
+                                $('#id2001_windDir').empty().append('<h2>' + obj.windDir + "</h2>");
+                                $('#id2001_windSpeed').empty().append('<h2>' + obj.windSpeed + "</h2>");
+                                $('#id2001_lux').empty().append('<h2>' + obj.lux + "</h2>");
+                                $('#id2001_temp').empty().append('<h2>' + obj.airTemperature + "</h2>");
+                                $('#id2001_rhumidity').empty().append('<h2>' + obj.rhumidity + "</h2>");
+                                $('#id2001_nowTime').empty().append('<h2>' + obj.nowTime + "</h2>");
                             } else if (index == 1) {
-                                $('#id2002_windDir').empty().append('<h4>' + obj.windDir + "</h4>");
-                                $('#id2002_windSpeed').empty().append('<h4>' + obj.windSpeed + "</h4>");
-                                $('#id2002_lux').empty().append('<h4>' + obj.lux + "</h4>");
-                                $('#id2002_temp').empty().append('<h4>' + obj.airTemperature + "</h4>");
-                                $('#id2002_rhumidity').empty().append('<h4>' + obj.rhumidity + "</h4>");
-                                $('#id2002_nowTime').empty().append('<h4>' + obj.nowTime + "</h4>");
+                                $('#id2002_windDir').empty().append('<h2>' + obj.windDir + "</h2>");
+                                $('#id2002_windSpeed').empty().append('<h2>' + obj.windSpeed + "</h2>");
+                                $('#id2002_lux').empty().append('<h2>' + obj.lux + "</h2>");
+                                $('#id2002_temp').empty().append('<h2>' + obj.airTemperature + "</h2>");
+                                $('#id2002_rhumidity').empty().append('<h2>' + obj.rhumidity + "</h2>");
+                                $('#id2002_nowTime').empty().append('<h2>' + obj.nowTime + "</h2>");
                             } else if (index == 2) {
-                                $('#id2003_windDir').empty().append('<h4>' + obj.windDir + "</h4>");
-                                $('#id2003_windSpeed').empty().append('<h4>' + obj.windSpeed + "</h4>");
-                                $('#id2003_lux').empty().append('<h4>' + obj.lux + "</h4>");
-                                $('#id2003_temp').empty().append('<h4>' + obj.airTemperature + "</h4>");
-                                $('#id2003_rhumidity').empty().append('<h4>' + obj.rhumidity + "</h4>");
-                                $('#id2003_nowTime').empty().append('<h4>' + obj.nowTime + "</h4>");
-                            } else if (index == 3) {
-                                $('#id2004_windDir').empty().append('<h4>' + obj.windDir + "</h4>");
-                                $('#id2004_windSpeed').empty().append('<h4>' + obj.windSpeed + "</h4>");
-                                $('#id2004_lux').empty().append('<h4>' + obj.lux + "</h4>");
-                                $('#id2004_temp').empty().append('<h4>' + obj.airTemperature + "</h4>");
-                                $('#id2004_rhumidity').empty().append('<h4>' + obj.rhumidity + "</h4>");
-                                $('#id2004_nowTime').empty().append('<h4>' + obj.nowTime + "</h4>");
-                            } else if (index == 4) {
-                                $('#id2005_windDir').empty().append('<h4>' + obj.windDir + "</h4>");
-                                $('#id2005_windSpeed').empty().append('<h4>' + obj.windSpeed + "</h4>");
-                                $('#id2005_lux').empty().append('<h4>' + obj.lux + "</h4>");
-                                $('#id2005_temp').empty().append('<h4>' + obj.airTemperature + "</h4>");
-                                $('#id2005_rhumidity').empty().append('<h4>' + obj.rhumidity + "</h4>");
-                                $('#id2005_nowTime').empty().append('<h4>' + obj.nowTime + "</h4>");
-                            } else if (index == 5) {
-                                $('#id2006_windDir').empty().append('<h4>' + obj.windDir + "</h4>");
-                                $('#id2006_windSpeed').empty().append('<h4>' + obj.windSpeed + "</h4>");
-                                $('#id2006_lux').empty().append('<h4>' + obj.lux + "</h4>");
-                                $('#id2006_temp').empty().append('<h4>' + obj.airTemperature + "</h4>");
-                                $('#id2006_rhumidity').empty().append('<h4>' + obj.rhumidity + "</h4>");
-                                $('#id2006_nowTime').empty().append('<h4>' + obj.nowTime + "</h4>");
+                                $('#id2003_windDir').empty().append('<h2>' + obj.windDir + "</h2>");
+                                $('#id2003_windSpeed').empty().append('<h2>' + obj.windSpeed + "</h2>");
+                                $('#id2003_lux').empty().append('<h2>' + obj.lux + "</h2>");
+                                $('#id2003_temp').empty().append('<h2>' + obj.airTemperature + "</h2>");
+                                $('#id2003_rhumidity').empty().append('<h2>' + obj.rhumidity + "</h2>");
+                                $('#id2003_nowTime').empty().append('<h2>' + obj.nowTime + "</h2>");
                             }
-                        } else {
+                        }
+                        else {
                             //값이 없으면 표시 안하도록 변경
                             if (index == 0) {
                                 $('#id2001_windDir').empty().append('<h4>' + ' - ' + "</h4>");
@@ -298,28 +207,6 @@
                                 $('#id2003_temp').empty().append('<h4>' + ' - ' + "</h4>");
                                 $('#id2003_rhumidity').empty().append('<h4>' + ' - ' + "</h4>");
                                 $('#id2003_nowTime').empty().append('<h4>' + ' - ' + "</h4>");
-                            } else if (index == 3) {
-                                $('#id2004_windDir').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2004_windSpeed').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2004_lux').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2004_temp').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2004_rhumidity').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2004_nowTime').empty().append('<h4>' + ' - ' + "</h4>");
-                            } else if (index == 4) {
-                                $('#id2005_windDir').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2005_windSpeed').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2005_lux').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2005_temp').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2005_rhumidity').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2005_nowTime').empty().append('<h4>' + ' - ' + "</h4>");
-
-                            } else if (index == 5) {
-                                $('#id2006_windDir').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2006_windSpeed').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2006_lux').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2006_temp').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2006_rhumidity').empty().append('<h4>' + ' - ' + "</h4>");
-                                $('#id2006_nowTime').empty().append('<h4>' + ' - ' + "</h4>");
                             }
                         }
                     });
