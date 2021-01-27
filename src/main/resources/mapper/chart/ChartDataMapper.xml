@@ -15,7 +15,7 @@
                         FROM pier_env
                         WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
-                            AND SensorID =  #{sensorId}
+                            AND UPPER(SensorId) = #{sensorId}
                      )a
         )TEMP
         GROUP BY x
@@ -36,7 +36,7 @@
                         FROM pier_env
                         WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
-                            AND SensorID =  #{sensorId}
+                            AND UPPER(SensorId) =  #{sensorId}
                      )a
           )TEMP
        GROUP BY x
@@ -57,7 +57,7 @@
                         FROM pier_env
                         WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
-                            AND SensorID =  #{sensorId}
+                            AND UPPER(SensorId) =  #{sensorId}
                      )a
           )TEMP
        GROUP BY x
@@ -78,7 +78,7 @@
                         FROM pier_env
                         WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
-                            AND SensorID =  #{sensorId}
+                            AND UPPER(SensorId) = #{sensorId}
                      )a
           )TEMP
        GROUP BY x
@@ -99,7 +99,7 @@
                         FROM pier_env
                         WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
-                            AND SensorID =  #{sensorId}
+                            AND UPPER(SensorId) = #{sensorId}
                      )a
           )TEMP
        GROUP BY x
@@ -119,7 +119,7 @@
                         FROM pier_env
                         WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
-                            AND SensorID =  #{sensorId}
+                            AND UPPER(SensorId) = #{sensorId}
                      )a
           )TEMP
        GROUP BY x
@@ -139,7 +139,7 @@
                         FROM pier_env
                         WHERE date_format(RCVTime, '%Y-%m-%d %H:%i:%s')   <![CDATA[ >= ]]> str_to_date(#{startDate}, '%Y-%m-%d %H:%i:%s')
                             AND date_format(RCVTime, '%Y-%m-%d %H:%i:%s') <![CDATA[ < ]]> str_to_date(#{endDate}, '%Y-%m-%d %H:%i:%s')
-                            AND SensorID =  #{sensorId}
+                            AND UPPER(SensorId) =  #{sensorId}
                      )a
           )TEMP
        GROUP BY x
